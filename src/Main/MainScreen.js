@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Platform, RefreshControl, Text, TouchableWithoutFeedback, View, ScrollView} from "react-native";
+import { Alert, Image, Platform, RefreshControl, Text, TouchableWithoutFeedback, View, ScrollView} from "react-native";
 import {styles, addr} from "../../consts";
 import {ModuleView} from "./ModuleView";
 import {FilterScrollView, SearchView} from "./SearchView";
@@ -102,6 +102,7 @@ class Header extends React.Component {
                         right: 16,
                         bottom: 13.5,
                         position: 'absolute',
+                        zIndex: 100
                     }}/>
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={() => (this.handler("open"))}>
@@ -252,8 +253,8 @@ class MainScreen extends React.Component {
                 <View style={{
                     height: 45,
                     width: '100%',
-                    backgroundColor: '#fefefe',
-                    display: Platform.OS === 'android' ? 'none' : 'block'
+                    backgroundColor: this.props.dark ? '#2a2a2a' : '#fefefe',
+                    display: Platform.OS === 'android' ? 'none' : 'flex'
                 }}/>
                 <ScrollView keyboardShouldPersistTaps={'handled'} refreshControl={
                     <RefreshControl
@@ -290,10 +291,15 @@ class MainScreen extends React.Component {
 
 }
 
+const mapStateToProps = (state) => {
+    Alert.alert(state.settings.dark.toString(), "1");
+    return {dark: state.settings.dark}
+};
+
 const mapDispatchToProps = dispatch => (
     bindActionCreators({
         initCards,
     }, dispatch)
 );
-  
-export default connect(mapDispatchToProps)(MainScreen);
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);

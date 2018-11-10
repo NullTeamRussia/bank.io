@@ -1,6 +1,9 @@
 import React from 'react';
 import {Image, TouchableWithoutFeedback, View, Text, Switch} from "react-native";
 import {GoBackButton} from "../Shared/GoBackArrow";
+import { connect } from 'react-redux';
+import {bindActionCreators} from "redux";
+import {darkTheme} from "../Actions/darkTheme";
 
 class SettingsScreenHeader extends React.Component {
     render() {
@@ -22,7 +25,7 @@ class Cell extends React.Component {
     }
 }
 
-export class SettingsScreen extends React.Component {
+class SettingsScreen extends React.Component {
 
     static navigationOptions = {
         header: null,
@@ -49,7 +52,10 @@ export class SettingsScreen extends React.Component {
                 justifyContent: 'center',
             }}>
                 <Text style={{fontSize: 17, color: '#272727', marginLeft: 10}}>Тёмная тема</Text>
-                <Switch onValueChange={() => {}}
+                <Switch value={this.props.dark}
+                        onValueChange={() => {
+                            this.props.darkTheme();
+                        }}
                         ios_backgroundColor={'#9ed3ff'}
                         trackColor={{false: "#3176fe", true: '#9ed3ff'}}
                         style={{
@@ -71,7 +77,7 @@ export class SettingsScreen extends React.Component {
                     onPress={() => (this.props.navigation.navigate('Cards'))}
                 >Мои карты</Text>
             </View>
-        )
+        );
 
         return (
             <View style={settingsScreenStyle}>
@@ -87,3 +93,16 @@ export class SettingsScreen extends React.Component {
         );
     }
 }
+
+
+const mapStateToProps = (state) => {
+    return {dark: state.settings.dark}
+};
+
+const mapDispatchToProps = dispatch => (
+    bindActionCreators({
+        darkTheme,
+    }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsScreen)

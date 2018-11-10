@@ -100,6 +100,6 @@ const mapDispatchToProps = dispatch => (
         addCard,
     }, dispatch)
 );
-  
+
 export default connect(mapStateToProps, mapDispatchToProps)(CardsScreen);
 

@@ -9,7 +9,7 @@ import {
 } from 'react-navigation';
 import { MapsScreen } from "./src/Maps/MapsScreen";
 import MainScreen from "./src/Main/MainScreen";
-import { SettingsScreen } from "./src/Settings/SettingsScreen";
+import SettingsScreen from "./src/Settings/SettingsScreen";
 import CardsScreen from "./src/Cards/CardsScreen";
 
 const AppNavigator = createStackNavigator(
