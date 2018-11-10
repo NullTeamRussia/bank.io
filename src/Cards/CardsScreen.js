@@ -27,7 +27,7 @@ class CardsScreen extends React.Component {
         super(props);
 
         this.state = {
-            isScrollEnabled: true,
+            isScrollEnabled: true
         }
     }
 
@@ -88,7 +88,7 @@ class CardsScreen extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return {cards: state.cards.cards}
+    return {cards: state.cards.Cards}
 };
 
 const mapDispatchToProps = {

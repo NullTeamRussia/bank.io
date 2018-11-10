@@ -37,7 +37,8 @@ export class Card extends React.Component {
             height: 150,
             backgroundColor: "gray",
             borderRadius: 6,
-            marginBottom: 20
+            marginBottom: 20,
+            flex: 1,
         }
 
         return (
