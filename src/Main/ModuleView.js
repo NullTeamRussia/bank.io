@@ -3,13 +3,18 @@ import {Text, View} from "react-native";
 import {Imgs} from "./Imgs";
 import {styles} from "../../consts";
 import {MultiSelectList, MyListItem} from "./MainScreen";
+import {ATMView} from "./ATMView";
+
 
 class MyModuleContent extends React.PureComponent {
     render() {
         if (this.props.type === "images")
             return (
                 <View>
-                    <Imgs handler={this.props.handler} state={this.props.state} {...this.props.state} />
+                    <Text>
+                        lol
+                    </Text>
+                    {/*<Imgs handler={this.props.handler} state={this.props.state} {...this.props.state} />*/}
                 </View>
             );
         else if (this.props.type === "text")
@@ -18,6 +23,13 @@ class MyModuleContent extends React.PureComponent {
                     <Text>alo</Text>
                 </View>
             );
+        else if (this.props.type === "atm") {
+            return (
+                <View>
+                    <ATMView/>
+                </View>
+            );
+        }
     }
 }
 

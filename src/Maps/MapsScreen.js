@@ -2,7 +2,7 @@ import React from "react";
 import MapView, {PROVIDER_GOOGLE}  from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 import { View, Text, Image, TouchableWithoutFeedback} from "react-native";
-import { styles } from "../../consts";
+import { styles, ATMs} from "../../consts";
 import {GoBackButton} from "../Shared/GoBackArrow";
 
 class MapsScreenFooter extends React.Component {
@@ -72,6 +72,8 @@ export class MapsScreen extends React.Component {
         super(props);
 
         this.state = {
+            myLong: 1,
+            myLat: 2,
             markers: [{
                 title: 'hello',
                 coordinates: {
@@ -89,6 +91,17 @@ export class MapsScreen extends React.Component {
         }
     }
 
+    componentDidMount() {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                this.setState({
+                    myLat: position.coords.latitude,
+                    myLong: position.coords.longitude,
+                });
+            }
+        );
+    }
+
     render() {
         return (
             <View style={{
@@ -96,16 +109,17 @@ export class MapsScreen extends React.Component {
             }}>
                 <GoBackButton navigation={this.props.navigation}/>
                 <MapView
+                    showsUserLocation={true}
                     provider={PROVIDER_GOOGLE}
                     style={{
                         width: "100%",
                         height: "100%"
                     }}
                     initialRegion={{
-                        latitude: 37.78825,
-                        longitude: -122.4324,
-                        latitudeDelta: 0.0922,
-                        longitudeDelta: 0.0421,
+                        latitude: 59.937013,
+                        longitude: 30.313668,
+                        latitudeDelta: 0.0522,
+                        longitudeDelta: 0.0121,
                 }}>
                     {this.state.markers.map(marker => (
                         <MapView.Marker
@@ -115,12 +129,12 @@ export class MapsScreen extends React.Component {
                     ))}
                     <MapViewDirections
                         origin={{
-                            latitude: 37.78825, 
-                            longitude: -122.4324
+                            latitude: this.state.myLat,
+                            longitude: this.state.myLong
                         }}
                         destination={{
-                            latitude: 37.787,
-                            longitude: -122.431
+                            latitude: ATMs[1].location.lat,
+                            longitude: ATMs[1].location.long
                         }}
                         strokeWidth={3}
                         apikey={"AIzaSyBOWUeXkciKNnmuOERJP_I2p65MV2c45AE"}

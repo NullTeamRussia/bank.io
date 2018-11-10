@@ -1,6 +1,49 @@
 import {StyleSheet} from "react-native";
 
 export const addr = "https://api.unsplash.com/photos/random?count=10&client_id=" + "dcd8d89b0dc25dfca3498a968214fac1d767dea3be8ae82f3aba8b51a0b5157f";
+
+export const ATMs = [
+    {
+        address: "Карла Маркса, 12/34",
+        location: {
+            lat: 59.939152,
+            long: 30.317912,
+        },
+        currency: ["RUB", "DOLL", "EUR"],
+        type: "atm",
+        nfc: true,
+        banks: [
+            {
+                "sberbank": 0
+            },
+            {
+                "tinkoff": 15
+            },
+        ],
+        providers: ["visa", "mastercard", "ae", "mir"]
+    },
+    {
+        address: "Площадь Революции, 13/37",
+        location: {
+            lat: 59.935756,
+            long: 30.315014,
+        },
+        currency: ["RUB"],
+        type: "magaz",
+        nfc: true,
+        cashback: true,
+        banks: [
+            {
+                "sberbank": 0
+            },
+            {
+                "tinkoff": 0
+            },
+        ],
+        providers: ["visa", "mastercard", "mir"]
+    },
+];
+
 export const styles = StyleSheet.create({
     coreContainer: {
         flex: 1,

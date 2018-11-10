@@ -224,23 +224,11 @@ class MainScreen extends React.Component {
     };
 
     _loadData() {
-        return fetch(addr)
-            .then((response) => response.json())
-            .then((responseJson) => {
-
-                //buffer.data = responseJson;
-                this.setState({
-                    loaded: true,
-                    data: responseJson,
-                    refreshing: false,
-                }, function(){
-
-                });
-
-            })
-            .catch((error) =>{
-                console.error(error);
-            });
+        this.setState({
+            loaded: true,
+            refreshing: false,
+        });
+        return null;
     }
 
     componentDidMount() {
@@ -277,12 +265,12 @@ class MainScreen extends React.Component {
                                 state={this.state}
                                 {...this.state}
                             />
-                            {/*<ModuleView*/}
-                                {/*title="Магазины"*/}
-                                {/*titleColor={"#eaeaea"}*/}
-                                {/*content="text"*/}
-                                {/*color={"#414141"}*/}
-                            {/*/>*/}
+                            <ModuleView
+                                title="Банкоматы"
+                                titleColor={"#2a2a2a"}
+                                content="atm"
+                                color={"#fefefe"}
+                            />
                         </View>)}
                 </ScrollView>
             </View>
@@ -292,7 +280,6 @@ class MainScreen extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    Alert.alert(state.settings.dark.toString(), "1");
     return {dark: state.settings.dark}
 };
 
