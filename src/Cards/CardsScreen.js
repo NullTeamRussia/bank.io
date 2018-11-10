@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, ScrollView, TouchableWithoutFeedback, Image } from "react-native"
-import { Card } from "./Card";
+import Card from "./Card";
 import { GoBackButton } from "../Shared/GoBackArrow";
 import { AddButton } from '../Shared/AddButton';
 import { addCard } from "../Actions/add_card"
