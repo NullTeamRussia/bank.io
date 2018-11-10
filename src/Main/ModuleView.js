@@ -26,7 +26,7 @@ class MyModuleContent extends React.PureComponent {
         else if (this.props.type === "atm") {
             return (
                 <View>
-                    <ATMView/>
+                    <ATMView handler={this.props.handler} />
                 </View>
             );
         }

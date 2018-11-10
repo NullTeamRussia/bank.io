@@ -1,4 +1,4 @@
-import {Image, Text, View, FlatList} from "react-native";
+import {Image, Text, View, FlatList, TouchableWithoutFeedback} from "react-native";
 import React from "react";
 import {ATMs} from "../../consts";
 import {connect} from "react-redux";
@@ -111,45 +111,47 @@ class ATMElement extends React.Component {
         const leftImage = this.props.item.type === "atm" ? require("../../img/atm.png") : require("../../img/cashback.png");
         const leftText = this.props.item.type === "atm" ? "ATM" : "Касса";
         return (
-            <View style={{
-                width: "100%",
-                height: 125,
-                backgroundColor: this.props.dark ? "#111111" : "#f1f1f1",
-                marginBottom: 20,
-                borderRadius: 11
-            }}>
-                <Text style={{
-                    fontSize: 13,
-                    fontWeight: "bold",
-                    left: 51,
-                    top: 25,
-                    color: this.props.dark ? "#d4d4d4" : "#202020",
-                }}>
-                    {leftText}
-                </Text>
+            <TouchableWithoutFeedback onPress={() => this.props.handler(this.props.item, "atmInfo")} style={{height: '100%', width: '100%'}}>
                 <View style={{
-                    position: 'absolute',
-                    left: 20,
-                    top: 22
+                    width: "100%",
+                    height: 125,
+                    backgroundColor: this.props.dark ? "#111111" : "#f1f1f1",
+                    marginBottom: 20,
+                    borderRadius: 11
                 }}>
-                    <Image source={leftImage} style={{height: 21.5, width: 21.5}} />
+                    <Text style={{
+                        fontSize: 13,
+                        fontWeight: "bold",
+                        left: 51,
+                        top: 25,
+                        color: this.props.dark ? "#d4d4d4" : "#202020",
+                    }}>
+                        {leftText}
+                    </Text>
+                    <View style={{
+                        position: 'absolute',
+                        left: 20,
+                        top: 22
+                    }}>
+                        <Image source={leftImage} style={{height: 21.5, width: 21.5}} />
+                    </View>
+                    <Text style={{
+                        fontSize: 19,
+                        fontWeight: 'bold',
+                        left: 20,
+                        width: 200,
+                        position: "absolute",
+                        bottom: 20,
+                        color: this.props.dark ? "#d4d4d4" : "#202020",
+                    }}>
+                        {this.props.item.address}
+                    </Text>
+                    <View style={{position: 'absolute', right: 0}}>
+                        <ProvidersAvailable dark={this.props.dark} item={this.props.item} data={this.props.item.banks} />
+                    </View>
+                    <CustomPropsView dark={this.props.dark} item={this.props.item} data={this.props.item.custom} />
                 </View>
-                <Text style={{
-                    fontSize: 19,
-                    fontWeight: 'bold',
-                    left: 20,
-                    width: 200,
-                    position: "absolute",
-                    bottom: 20,
-                    color: this.props.dark ? "#d4d4d4" : "#202020",
-                }}>
-                    {this.props.item.address}
-                </Text>
-                <View style={{position: 'absolute', right: 0}}>
-                    <ProvidersAvailable dark={this.props.dark} item={this.props.item} data={this.props.item.banks} />
-                </View>
-                <CustomPropsView dark={this.props.dark} item={this.props.item} data={this.props.item.custom} />
-            </View>
+            </TouchableWithoutFeedback>
         );
     }
 }

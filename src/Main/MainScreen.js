@@ -176,19 +176,12 @@ class MainScreen extends React.Component {
     handler(data, type) {
         const { navigate } = this.props.navigation;
         switch (type) {
-            case "imageInfo": {
-                let content = (
-                    <View>
-                        <Text>User's name: {data.user.name}</Text>
-                        <Text>Location: {data.user.location}</Text>
-                    </View>
-                );
-
+            case "atmInfo": {
                 this.setState({
-                    popupContent: content,
+                    popupContent: data,
                 });
 
-                navigate('Maps', {content: content});
+                navigate('Maps', {content: data});
                 return;
             }
             case "openSettings": {
@@ -270,6 +263,7 @@ class MainScreen extends React.Component {
                                 titleColor={this.props.dark ? "#c2c2c2" : "#2a2a2a"}
                                 content="atm"
                                 color={this.props.dark ? "#171717" : "#fefefe"}
+                                handler={this.handler.bind(this)}
                             />
                         </View>)}
                 </ScrollView>
