@@ -1,1 +1,5 @@
 node_modules
+android/app/build
+android/.gradle
+.vscode
+.vs
