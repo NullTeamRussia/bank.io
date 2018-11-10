@@ -8,7 +8,7 @@ class SettingsScreenHeader extends React.Component {
     render() {
         return (
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
-                <Text style={{fontSize: 25, fontWeight: 'bold', color: '#272727', marginLeft: -12}}>Настройки</Text>
+                <Text style={{fontSize: 25, fontWeight: 'bold', color: !this.props.dark ? "#171717" : "#eaeaea", marginLeft: -12}}>Настройки</Text>
             </View>
         );
     }
@@ -43,7 +43,7 @@ class SettingsScreen extends React.Component {
             width: '100%',
             height: '100%',
             position: 'absolute',
-            backgroundColor: "#ffffff",
+            backgroundColor: this.state.dark ? "#2a2a2a" : "#eaeaea",
             zIndex: 1000,
             display: "flex",
             paddingTop: 50,
@@ -57,13 +57,13 @@ class SettingsScreen extends React.Component {
                 width: '100%',
                 justifyContent: 'center',
             }}>
-                <Text style={{fontSize: 17, color: '#272727', marginLeft: 10}}>Тёмная тема</Text>
+                <Text style={{fontSize: 17, color: !this.state.dark ? "#171717" : "#eaeaea", marginLeft: 10}}>Тёмная тема</Text>
                 <Switch value={this.state.dark}
                         onValueChange={() => {
                             this.props.darkTheme(!this.state.dark);
                             this.setState({dark: !this.state.dark})}}
-                        ios_backgroundColor={'#9ed3ff'}
-                        trackColor={{false: "#3176fe", true: '#9ed3ff'}}
+                        ios_backgroundColor={'#797bc1'}
+                        trackColor={{false: "#797bc1", true: '#797bc1'}}
                         style={{
                             position: 'absolute',
                             right: 0,
@@ -79,7 +79,7 @@ class SettingsScreen extends React.Component {
                 justifyContent: 'center',
             }}>
                 <Text 
-                    style={{fontSize: 17, color: '#272727', marginLeft: 10}} 
+                    style={{fontSize: 17, color: !this.state.dark ? "#171717" : "#eaeaea", marginLeft: 10}}
                     onPress={() => (this.props.navigation.navigate('Cards'))}
                 >Мои карты</Text>
             </View>
@@ -88,7 +88,7 @@ class SettingsScreen extends React.Component {
         return (
             <View style={settingsScreenStyle}>
                 <GoBackButton navigation={this.props.navigation}/>
-                <SettingsScreenHeader/>
+                <SettingsScreenHeader dark={this.state.dark}/>
                 <View style={{
                     marginTop: 30,
                 }}>

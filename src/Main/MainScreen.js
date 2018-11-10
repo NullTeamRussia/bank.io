@@ -77,12 +77,12 @@ class Header extends React.Component {
     render() {
         let header;
         switch (this.props.title) {
-            case "org": header = "Photo.io"; break;
+            case "org": header = "Cash.io"; break;
             case "star": header = 'Избранное';
         }
         return (
             <View style={{
-                backgroundColor: "#fefefe",
+                backgroundColor: this.props.dark ? "#2a2a2a" : "#fefefe",
                 width: '100%',
                 alignItems: 'center',
                 justifyContent: 'flex-end',
@@ -90,7 +90,7 @@ class Header extends React.Component {
                 paddingBottom: 10,
             }}>
                 <View style={{flex: 1}}>
-                    <Text style={{fontSize: 25, fontWeight: 'bold', color: '#272727'}}>
+                    <Text style={{fontSize: 25, fontWeight: 'bold', color: this.props.dark ? '#eaeaea' : '#272727'}}>
                         {header}
                     </Text>
                 </View>
@@ -220,23 +220,8 @@ class MainScreen extends React.Component {
     };
 
     _loadData() {
-        return fetch(addr)
-            .then((response) => response.json())
-            .then((responseJson) => {
-
-                //buffer.data = responseJson;
-                this.setState({
-                    loaded: true,
-                    data: responseJson,
-                    refreshing: false,
-                }, function(){
-
-                });
-
-            })
-            .catch((error) =>{
-                console.error(error);
-            });
+        this.setState({refreshing: false, loaded: true});
+        return null;
     }
 
     componentDidMount() {
@@ -245,7 +230,10 @@ class MainScreen extends React.Component {
 
     render(){
         return(
-            <View style={styles.coreContainer}>
+            <View style={{
+                flex: 1,
+                backgroundColor: this.props.dark ? '#2a2a2a' : '#fefefe'
+            }}>
                 <View style={{
                     height: 45,
                     width: '100%',
@@ -256,28 +244,28 @@ class MainScreen extends React.Component {
                     <RefreshControl
                         refreshing={this.state.refreshing}
                         onRefresh={this._onRefresh}
-                        title={"Pull to reload..."}
-                        tintColor={"#ff442c"}
-                        titleColor={"#ff442c"}
-                        colors={['#ff442c']}
+                        tintColor={this.props.dark ? "#eaeaea" : "#2a2a2a"}
+                        colors={[this.props.dark ? "#eaeaea" : "#2a2a2a"]}
                     />
                 }>
                     {this.state.filterContent}
-                    <Header title={this.state.header} handler={this.handler.bind(this)} filtersSelect={this.state.filtersSelect}/>
+                    <Header dark={this.props.dark} title={this.state.header} handler={this.handler.bind(this)} filtersSelect={this.state.filtersSelect}/>
                     {this.state.mainContent || (
                         <View>
                             <ModuleView
                                 handler={this.handler.bind(this)}
-                                title="Избранное"
+                                title="Действия"
                                 content="images"
+                                color={this.props.dark ? "#171717" : "#eaeaea"}
+                                titleColor={this.props.dark ? "#eaeaea" : "#2a2a2a"}
                                 state={this.state}
                                 {...this.state}
                             />
                             <ModuleView
                                 title="Банкоматы"
-                                titleColor={"#eaeaea"}
+                                titleColor={this.props.dark ? "#eaeaea" : "#2a2a2a"}
                                 content="atm"
-                                color={"#414141"}
+                                color={this.props.dark ? "#171717" : "#eaeaea"}
                             />
                         </View>)}
                 </ScrollView>
@@ -288,7 +276,6 @@ class MainScreen extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {dark: state.settings.dark}
 };
 

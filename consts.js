@@ -46,8 +46,6 @@ export const ATMs = [
 
 export const styles = StyleSheet.create({
     coreContainer: {
-        flex: 1,
-        backgroundColor: '#ffffff',
         /* remove in production */
         // paddingTop: 25,
     },
