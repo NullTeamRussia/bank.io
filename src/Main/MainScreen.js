@@ -232,12 +232,13 @@ class MainScreen extends React.Component {
     }
 
     render(){
+        const { dark } = this.props;
         return(
             <View style={styles.coreContainer}>
                 <View style={{
                     height: 45,
                     width: '100%',
-                    backgroundColor: this.props.dark ? '#2a2a2a' : '#fefefe',
+                    backgroundColor: dark ? '#2a2a2a' : '#fefefe',
                     display: Platform.OS === 'android' ? 'none' : 'flex'
                 }}/>
                 <ScrollView keyboardShouldPersistTaps={'handled'} refreshControl={
@@ -275,8 +276,10 @@ class MainScreen extends React.Component {
 
 }
 
-const mapStateToProps = (state) => {
-    return {dark: state.settings.dark}
+const mapStateToProps = state => {
+    return {
+        dark: state.settings.dark
+    }
 };
 
 const mapDispatchToProps = {

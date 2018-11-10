@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, TouchableWithoutFeedback, View, Text, Switch} from "react-native";
+import {Image, TouchableWithoutFeedback, View, Text, Switch, Alert} from "react-native";
 import {GoBackButton} from "../Shared/GoBackArrow";
 import { connect } from 'react-redux';
 import {darkTheme} from "../Actions/darkTheme";
@@ -31,7 +31,7 @@ class SettingsScreen extends React.Component {
     };
     
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
             dark: this.props.dark
         }
@@ -60,7 +60,7 @@ class SettingsScreen extends React.Component {
                 <Text style={{fontSize: 17, color: '#272727', marginLeft: 10}}>Тёмная тема</Text>
                 <Switch value={this.state.dark}
                         onValueChange={() => {
-                            this.props.darkTheme(!this.state.dark); 
+                            this.props.darkTheme(!this.state.dark);
                             this.setState({dark: !this.state.dark})}}
                         ios_backgroundColor={'#9ed3ff'}
                         trackColor={{false: "#3176fe", true: '#9ed3ff'}}
