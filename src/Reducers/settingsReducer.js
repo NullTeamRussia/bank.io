@@ -1,5 +1,4 @@
-import { storeCards, storeAutoIncrement } from "../Shared/Cards"
-import {ADD_CARD, INIT_CARDS, SWITCH_THEME} from "../Actions/types";
+import { SWITCH_THEME} from "../Actions/types";
 
 
 const initialState = {
@@ -9,7 +8,7 @@ const initialState = {
 const settingsReducer = (state = initialState, action) => {
     switch(action.type) {
         case SWITCH_THEME:
-            state.dark = !state.dark;
+            state.dark = action.payload;
             return state;
         default:
             return state;

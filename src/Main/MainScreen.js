@@ -144,7 +144,7 @@ class MainScreen extends React.Component {
                     AutoIncrement = 0
                     storeAutoIncrement(0)
                 }
-                initCards({Cards, AutoIncrement})
+                this.props.initCards({Cards, AutoIncrement})
             })
         })
         this.state = {
@@ -170,10 +170,6 @@ class MainScreen extends React.Component {
             }
         };
 
-    }
-
-    initCards (cards) {
-        initCards(cards)
     }
 
     handler(data, type) {
@@ -283,10 +279,8 @@ const mapStateToProps = (state) => {
     return {dark: state.settings.dark}
 };
 
-const mapDispatchToProps = dispatch => (
-    bindActionCreators({
-        initCards,
-    }, dispatch)
-);
+const mapDispatchToProps = {
+    initCards
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);
