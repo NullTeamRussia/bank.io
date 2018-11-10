@@ -220,11 +220,23 @@ class MainScreen extends React.Component {
     };
 
     _loadData() {
-        this.setState({
-            loaded: true,
-            refreshing: false,
-        });
-        return null;
+        return fetch(addr)
+            .then((response) => response.json())
+            .then((responseJson) => {
+
+                //buffer.data = responseJson;
+                this.setState({
+                    loaded: true,
+                    data: responseJson,
+                    refreshing: false,
+                }, function(){
+
+                });
+
+            })
+            .catch((error) =>{
+                console.error(error);
+            });
     }
 
     componentDidMount() {
@@ -232,13 +244,12 @@ class MainScreen extends React.Component {
     }
 
     render(){
-        const { dark } = this.props;
         return(
             <View style={styles.coreContainer}>
                 <View style={{
                     height: 45,
                     width: '100%',
-                    backgroundColor: dark ? '#2a2a2a' : '#fefefe',
+                    backgroundColor: this.props.dark ? '#2a2a2a' : '#fefefe',
                     display: Platform.OS === 'android' ? 'none' : 'flex'
                 }}/>
                 <ScrollView keyboardShouldPersistTaps={'handled'} refreshControl={
@@ -262,12 +273,12 @@ class MainScreen extends React.Component {
                                 state={this.state}
                                 {...this.state}
                             />
-                            <ModuleView
-                                title="Банкоматы"
-                                titleColor={"#2a2a2a"}
-                                content="atm"
-                                color={"#fefefe"}
-                            />
+                            {/*<ModuleView*/}
+                                {/*title="Магазины"*/}
+                                {/*titleColor={"#eaeaea"}*/}
+                                {/*content="text"*/}
+                                {/*color={"#414141"}*/}
+                            {/*/>*/}
                         </View>)}
                 </ScrollView>
             </View>
@@ -276,10 +287,9 @@ class MainScreen extends React.Component {
 
 }
 
-const mapStateToProps = state => {
-    return {
-        dark: state.settings.dark
-    }
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {dark: state.settings.dark}
 };
 
 const mapDispatchToProps = {
