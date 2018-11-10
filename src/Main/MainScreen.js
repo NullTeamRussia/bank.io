@@ -229,10 +229,16 @@ class MainScreen extends React.Component {
 
     render(){
         return(
-            <SafeAreaView style={{
+            <View style={{
                 flex: 1,
                 backgroundColor: this.props.dark ? '#2a2a2a' : '#908ee42'
             }}>
+                <View style={{
+                    height: 45,
+                    width: '100%',
+                    backgroundColor: this.props.dark ? '#2a2a2a' : '#908ee4',
+                    display: Platform.OS === 'android' ? 'none' : 'flex'
+                }}/>
                 <ScrollView keyboardShouldPersistTaps={'handled'} refreshControl={
                     <RefreshControl
                         refreshing={this.state.refreshing}
@@ -262,7 +268,7 @@ class MainScreen extends React.Component {
                             />
                         </View>)}
                 </ScrollView>
-            </SafeAreaView>
+            </View>
         );
     }
 
