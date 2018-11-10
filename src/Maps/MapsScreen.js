@@ -4,6 +4,7 @@ import MapViewDirections from 'react-native-maps-directions';
 import { View, Text, Image, TouchableWithoutFeedback} from "react-native";
 import { styles, ATMs} from "../../consts";
 import {GoBackButton} from "../Shared/GoBackArrow";
+import connect from "react-redux/es/connect/connect";
 
 class MapsScreenFooter extends React.Component {
     render() {
@@ -62,7 +63,7 @@ class MapsScreenFooter extends React.Component {
     }
 }
 
-export class MapsScreen extends React.Component {
+class MapsScreen extends React.Component {
     
     static navigationOptions = {
         header: null,
@@ -92,7 +93,7 @@ export class MapsScreen extends React.Component {
         }
     }
 
-    darkMapStyle = [
+    darkMapStyle = !this.props.dark ? null : [
         {
             "elementType": "geometry",
             "stylers": [
@@ -350,3 +351,9 @@ export class MapsScreen extends React.Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {dark: state.settings.dark}
+};
+
+export default connect(mapStateToProps)(MapsScreen);
