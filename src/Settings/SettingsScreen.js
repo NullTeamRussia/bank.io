@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, TouchableWithoutFeedback, View, Text, Switch, Alert} from "react-native";
+import {Image, TouchableWithoutFeedback, View, Text, Switch, Alert, StatusBar} from "react-native";
 import {GoBackButton} from "../Shared/GoBackArrow";
 import { connect } from 'react-redux';
 import {darkTheme} from "../Actions/darkTheme";
@@ -88,6 +88,9 @@ class SettingsScreen extends React.Component {
 
         return (
             <View style={settingsScreenStyle}>
+                <StatusBar
+                    barStyle={this.state.dark ? "light-content" : "dark-content"}
+                />
                 <GoBackButton navigation={this.props.navigation}/>
                 <SettingsScreenHeader dark={this.state.dark}/>
                 <View style={{

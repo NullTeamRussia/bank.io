@@ -1,12 +1,82 @@
 import {Image, Text, View, FlatList} from "react-native";
 import React from "react";
 import {ATMs} from "../../consts";
+import {connect} from "react-redux";
+
+class CustomElement extends React.Component {
+    render() {
+        let dest;
+        if (this.props.item === "nfc") {
+            dest = this.props.dark ? require("../../img/nfcDark.png") : require("../../img/nfc.png");
+        }
+        if (this.props.item === "cashless") {
+            dest = this.props.dark ? require("../../img/contactlessDark.png") : require("../../img/contactless.png");
+        }
+        return (
+            <View style={{marginRight: 10}}>
+                <Image source={dest} style={{height: 17, width: 17}}/>
+            </View>
+        );
+    }
+}
+
+// Cashless/NFC
+class CustomPropsView extends React.PureComponent {
+    _renderFlatListItem = ({item, index}) => (
+        <CustomElement dark={this.props.dark} item={item} />
+    );
+
+    render() {
+        return (
+            <FlatList
+                horizontal={true}
+                handler={this.props.handler}
+                data={this.props.item.custom}
+                renderItem={this._renderFlatListItem}
+                keyExtractor={(item, index) => item.toString()}
+                showsVerticalScrollIndicator={false}
+                style={{position: 'absolute', right: 5, bottom: 23}}
+            />
+        );
+    }
+}
 
 class ProviderElement extends React.Component {
     render() {
+        let dest, style;
+        if (this.props.item === "mir") {
+            style = {
+                width: 42,
+                height: 17,
+            };
+            dest = this.props.dark ? require("../../img/mirDark.png") : require("../../img/mir.png");
+        }
+        if (this.props.item === "mastercard") {
+            style = {
+                width: 22,
+                height: 17,
+            };
+            dest = this.props.dark ? require("../../img/mastercardDark.png") : require("../../img/mastercard.png");
+        }
+        if (this.props.item === "ae") {
+            style = {
+                width: 29,
+                height: 17,
+            };
+            dest = this.props.dark ? require("../../img/aeDark.png") : require("../../img/ae.png");
+        }
+        if (this.props.item === "visa") {
+            style = {
+                width: 37,
+                height: 17,
+            };
+            dest = this.props.dark ? require("../../img/visaDark.png") : require("../../img/visa.png");
+        }
         return (
-            <View>
-
+            <View style={{alignItems: 'center', paddingRight: 10}}>
+                <Image source={dest}
+                       style={style}
+                />
             </View>
         );
     }
@@ -14,7 +84,7 @@ class ProviderElement extends React.Component {
 
 class ProvidersAvailable extends React.Component {
     _renderFlatListItem = ({item, index}) => (
-        <ProviderElement item={item} />
+        <ProviderElement dark={this.props.dark} item={item} />
     );
 
     _renderFooter = () => (
@@ -24,12 +94,13 @@ class ProvidersAvailable extends React.Component {
     render() {
         return (
             <FlatList
+                horizontal={true}
                 handler={this.props.handler}
-                data={ATMs}
+                data={this.props.item.providers}
                 renderItem={this._renderFlatListItem}
-                keyExtractor={(item, index) => index.toString()}
+                keyExtractor={(item, index) => item.toString()}
                 showsVerticalScrollIndicator={false}
-                ListFooterComponent={this._renderFooter()}
+                style={{paddingTop: 24}}
             />
         );
     }
@@ -38,38 +109,55 @@ class ProvidersAvailable extends React.Component {
 class ATMElement extends React.Component {
     render() {
         const leftImage = this.props.item.type === "atm" ? require("../../img/atm.png") : require("../../img/cashback.png");
+        const leftText = this.props.item.type === "atm" ? "ATM" : "Касса";
         return (
             <View style={{
                 width: "100%",
-                height: 60,
-                borderBottomWidth: 0.5,
-                borderBottomColor: "#cbcbcb"
+                height: 125,
+                backgroundColor: this.props.dark ? "#111111" : "#f1f1f1",
+                marginBottom: 20,
+                borderRadius: 11
             }}>
-                <View style={{
-                    height: 40,
-                    width: 40,
-                    position: 'absolute',
-                    left: 0
+                <Text style={{
+                    fontSize: 13,
+                    fontWeight: "bold",
+                    left: 51,
+                    top: 25,
+                    color: this.props.dark ? "#d4d4d4" : "#202020",
                 }}>
-                    <Image source={leftImage} style={{height: 40, width: 40}} />
+                    {leftText}
+                </Text>
+                <View style={{
+                    position: 'absolute',
+                    left: 20,
+                    top: 22
+                }}>
+                    <Image source={leftImage} style={{height: 21.5, width: 21.5}} />
                 </View>
                 <Text style={{
-                    right: 0,
+                    fontSize: 19,
+                    fontWeight: 'bold',
+                    left: 20,
+                    width: 200,
                     position: "absolute",
-                    top: 5
+                    bottom: 20,
+                    color: this.props.dark ? "#d4d4d4" : "#202020",
                 }}>
                     {this.props.item.address}
                 </Text>
-                <ProvidersAvailable data={this.props.item.banks} />
+                <View style={{position: 'absolute', right: 0}}>
+                    <ProvidersAvailable dark={this.props.dark} item={this.props.item} data={this.props.item.banks} />
+                </View>
+                <CustomPropsView dark={this.props.dark} item={this.props.item} data={this.props.item.custom} />
             </View>
         );
     }
 }
 
-export class ATMView extends React.PureComponent {
+class ATMView extends React.PureComponent {
 
     _renderFlatListItem = ({item, index}) => (
-        <ATMElement handler={this.props.handler} item={item} index={index} state={this.state} />
+        <ATMElement dark={this.props.dark} handler={this.props.handler} item={item} index={index} state={this.state} />
     );
 
     _renderFooter = () => (
@@ -85,8 +173,16 @@ export class ATMView extends React.PureComponent {
                 keyExtractor={(item, index) => index.toString()}
                 showsVerticalScrollIndicator={false}
                 ListFooterComponent={this._renderFooter()}
-                style={{paddingRight: 30, paddingLeft: 30}}
+                style={{paddingRight: 20, paddingLeft: 20}}
             />
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        dark: state.settings.dark
+    }
+}
+
+export default connect(mapStateToProps)(ATMView)

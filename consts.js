@@ -11,16 +11,20 @@ export const ATMs = [
         },
         currency: ["RUB", "DOLL", "EUR"],
         type: "atm",
-        nfc: true,
         banks: [
             {
-                "sberbank": 0
+                bank: "sberbank",
+                nalog: 0
             },
             {
-                "tinkoff": 15
+                bank: "tinkoff",
+                nalog: 15
             },
         ],
-        providers: ["visa", "mastercard", "ae", "mir"]
+        providers: ["visa", "mastercard", "ae", "mir"],
+        custom: [
+            "nfc"
+        ],
     },
     {
         address: "Площадь Революции, 13/37",
@@ -30,17 +34,21 @@ export const ATMs = [
         },
         currency: ["RUB"],
         type: "magaz",
-        nfc: true,
-        cashback: true,
         banks: [
             {
-                "sberbank": 0
+                bank: "sberbank",
+                nalog: 0
             },
             {
-                "tinkoff": 0
+                bank: "tinkoff",
+                nalog: 0
             },
         ],
-        providers: ["visa", "mastercard", "mir"]
+        providers: ["visa", "mastercard", "mir"],
+        custom: [
+            "nfc",
+            "cashless"
+        ]
     },
 ];
 

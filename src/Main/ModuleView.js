@@ -3,7 +3,7 @@ import {Text, View} from "react-native";
 import {Imgs} from "./Imgs";
 import {styles} from "../../consts";
 import {MultiSelectList, MyListItem} from "./MainScreen";
-import {ATMView} from "./ATMView";
+import ATMView from "./ATMView";
 
 
 class MyModuleContent extends React.PureComponent {
