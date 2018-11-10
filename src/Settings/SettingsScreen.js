@@ -62,9 +62,8 @@ class SettingsScreen extends React.Component {
                         onValueChange={() => {
                             this.props.darkTheme(!this.state.dark);
                             this.setState({dark: !this.state.dark})}}
-                        ios_backgroundColor={'#797bc1'}
-                        backgroundColor={'#797bc1'}
-                        trackColor={{false: "#797bc1", true: '#797bc1'}}
+                        ios_backgroundColor={!this.state.dark ? '#d4d4d4' : '#908ee4'}
+                        trackColor={{false: "#d4d4d4", true: '#908ee4'}}
                         style={{
                             position: 'absolute',
                             right: 0,

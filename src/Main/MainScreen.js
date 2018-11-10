@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, Image, Platform, RefreshControl, Text, TouchableWithoutFeedback, View, ScrollView} from "react-native";
+import {SafeAreaView, Alert, Image, Platform, RefreshControl, Text, TouchableWithoutFeedback, View, ScrollView} from "react-native";
 import {styles, addr} from "../../consts";
 import {ModuleView} from "./ModuleView";
 import {FilterScrollView, SearchView} from "./SearchView";
@@ -82,7 +82,7 @@ class Header extends React.Component {
         }
         return (
             <View style={{
-                backgroundColor: this.props.dark ? "#2a2a2a" : "#fefefe",
+                backgroundColor: this.props.dark ? "#2a2a2a" : "#908ee4",
                 width: '100%',
                 alignItems: 'center',
                 justifyContent: 'flex-end',
@@ -90,7 +90,7 @@ class Header extends React.Component {
                 paddingBottom: 10,
             }}>
                 <View style={{flex: 1}}>
-                    <Text style={{fontSize: 25, fontWeight: 'bold', color: this.props.dark ? '#eaeaea' : '#272727'}}>
+                    <Text style={{fontSize: 25, fontWeight: 'bold', color: this.props.dark ? '#d3d3d3' : '#f8f8f8'}}>
                         {header}
                     </Text>
                 </View>
@@ -102,7 +102,6 @@ class Header extends React.Component {
                         right: 16,
                         bottom: 13.5,
                         position: 'absolute',
-                        zIndex: 100
                     }}/>
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={() => (this.handler("open"))}>
@@ -112,7 +111,7 @@ class Header extends React.Component {
                         left: 16,
                         bottom: 13.5,
                         position: 'absolute',
-                        zIndex: 101
+                        zIndex: 100
                     }}>
                         <Image style={{
                             height: 20,
@@ -230,16 +229,10 @@ class MainScreen extends React.Component {
 
     render(){
         return(
-            <View style={{
+            <SafeAreaView style={{
                 flex: 1,
-                backgroundColor: this.props.dark ? '#2a2a2a' : '#fefefe'
+                backgroundColor: this.props.dark ? '#2a2a2a' : '#908ee42'
             }}>
-                <View style={{
-                    height: 45,
-                    width: '100%',
-                    backgroundColor: this.props.dark ? '#2a2a2a' : '#fefefe',
-                    display: Platform.OS === 'android' ? 'none' : 'flex'
-                }}/>
                 <ScrollView keyboardShouldPersistTaps={'handled'} refreshControl={
                     <RefreshControl
                         refreshing={this.state.refreshing}
@@ -256,20 +249,20 @@ class MainScreen extends React.Component {
                                 handler={this.handler.bind(this)}
                                 title="Действия"
                                 content="images"
-                                color={this.props.dark ? "#171717" : "#eaeaea"}
-                                titleColor={this.props.dark ? "#eaeaea" : "#2a2a2a"}
+                                color={this.props.dark ? "#171717" : "#fefefe"}
+                                titleColor={this.props.dark ? "#c2c2c2" : "#2a2a2a"}
                                 state={this.state}
                                 {...this.state}
                             />
                             <ModuleView
                                 title="Банкоматы"
-                                titleColor={this.props.dark ? "#eaeaea" : "#2a2a2a"}
+                                titleColor={this.props.dark ? "#c2c2c2" : "#2a2a2a"}
                                 content="atm"
-                                color={this.props.dark ? "#171717" : "#eaeaea"}
+                                color={this.props.dark ? "#171717" : "#fefefe"}
                             />
                         </View>)}
                 </ScrollView>
-            </View>
+            </SafeAreaView>
         );
     }
 
