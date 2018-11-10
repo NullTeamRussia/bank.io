@@ -138,11 +138,13 @@ class MainScreen extends React.Component {
                 Cards = []
                 storeCards([])
             }
+            Cards = JSON.parse(Cards)
             retrieveAutoIncrement((err, AutoIncrement) => {
                 if (AutoIncrement === null) {
                     AutoIncrement = 0
                     storeAutoIncrement(0)
                 }
+                AutoIncrement = JSON.parse(AutoIncrement)
                 this.props.initCards({Cards, AutoIncrement})
             })
         })

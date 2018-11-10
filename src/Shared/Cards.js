@@ -6,7 +6,6 @@ export async function storeCards (cards) {
 
 export async function retrieveCards (callback) {
     const value = await AsyncStorage.getItem('Cards', callback);
-    return JSON.parse(value)
 }
 
 export async function storeAutoIncrement (autoIncrement) {
@@ -15,5 +14,4 @@ export async function storeAutoIncrement (autoIncrement) {
 
 export async function retrieveAutoIncrement (callback) {
     const value = await AsyncStorage.getItem('autoIncrement', callback);
-    return JSON.parse(value)
 }
