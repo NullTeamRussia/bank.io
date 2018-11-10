@@ -273,12 +273,12 @@ class MainScreen extends React.Component {
                                 state={this.state}
                                 {...this.state}
                             />
-                            {/*<ModuleView*/}
-                                {/*title="Магазины"*/}
-                                {/*titleColor={"#eaeaea"}*/}
-                                {/*content="text"*/}
-                                {/*color={"#414141"}*/}
-                            {/*/>*/}
+                            <ModuleView
+                                title="Банкоматы"
+                                titleColor={"#eaeaea"}
+                                content="atm"
+                                color={"#414141"}
+                            />
                         </View>)}
                 </ScrollView>
             </View>
