@@ -44,10 +44,6 @@ class CardsScreen extends React.Component {
         })
     }
 
-    addCard = (card) => {
-        addCard(card);
-    }
-
     render() {
 
         let cardsScreenStyle = {
@@ -95,11 +91,9 @@ const mapStateToProps = (state) => {
     return {cards: state.cards.cards}
 };
 
-const mapDispatchToProps = dispatch => (
-    bindActionCreators({
-        addCard,
-    }, dispatch)
-);
+const mapDispatchToProps = {
+    addCard
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardsScreen);
 
