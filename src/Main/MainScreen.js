@@ -1,5 +1,5 @@
 import React from "react";
-import {SafeAreaView, Alert, Image, Platform, RefreshControl, Text, TouchableWithoutFeedback, View, ScrollView} from "react-native";
+import {StatusBar, Alert, Image, Platform, RefreshControl, Text, TouchableWithoutFeedback, View, ScrollView} from "react-native";
 import {styles, addr} from "../../consts";
 import {ModuleView} from "./ModuleView";
 import {FilterScrollView, SearchView} from "./SearchView";
@@ -235,6 +235,9 @@ class MainScreen extends React.Component {
                 flex: 1,
                 backgroundColor: this.props.dark ? '#2a2a2a' : '#908ee4'
             }}>
+                <StatusBar
+                    barStyle={this.props.dark ? "light-content" : "dark-content"}
+                />
                 <View style={{
                     height: 45,
                     width: '100%',
@@ -253,15 +256,15 @@ class MainScreen extends React.Component {
                     <Header dark={this.props.dark} title={this.state.header} handler={this.handler.bind(this)} filtersSelect={this.state.filtersSelect}/>
                     {this.state.mainContent || (
                         <View>
-                            <ModuleView
-                                handler={this.handler.bind(this)}
-                                title="Действия"
-                                content="images"
-                                color={this.props.dark ? "#171717" : "#fefefe"}
-                                titleColor={this.props.dark ? "#c2c2c2" : "#2a2a2a"}
-                                state={this.state}
-                                {...this.state}
-                            />
+                            {/*<ModuleView*/}
+                                {/*handler={this.handler.bind(this)}*/}
+                                {/*title="Действия"*/}
+                                {/*content="images"*/}
+                                {/*color={this.props.dark ? "#171717" : "#fefefe"}*/}
+                                {/*titleColor={this.props.dark ? "#c2c2c2" : "#2a2a2a"}*/}
+                                {/*state={this.state}*/}
+                                {/*{...this.state}*/}
+                            {/*/>*/}
                             <ModuleView
                                 title="Банкоматы"
                                 titleColor={this.props.dark ? "#c2c2c2" : "#2a2a2a"}
