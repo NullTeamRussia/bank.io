@@ -233,7 +233,7 @@ class MainScreen extends React.Component {
         return(
             <View style={{
                 flex: 1,
-                backgroundColor: this.props.dark ? '#2a2a2a' : '#908ee42'
+                backgroundColor: this.props.dark ? '#2a2a2a' : '#908ee4'
             }}>
                 <View style={{
                     height: 45,
