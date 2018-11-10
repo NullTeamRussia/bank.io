@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c652b32f-8678-41bc-839d-b40f8847a991" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consts.js" beforeDir="false" afterPath="$PROJECT_DIR$/consts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/MainScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/MainScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Settings/SettingsScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settings/SettingsScreen.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -37,7 +34,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="14" />
-          <entry key="JavaScript" value="3156" />
+          <entry key="JavaScript" value="3157" />
           <entry key="PLAIN_TEXT" value="7" />
         </counts>
       </usages-collector>
@@ -55,7 +52,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Podfile" value="7" />
-          <entry key="js" value="3156" />
+          <entry key="js" value="3157" />
           <entry key="json" value="14" />
         </counts>
       </usages-collector>
@@ -78,8 +75,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Settings/SettingsScreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="65" column="69" selection-start-line="65" selection-start-column="69" selection-end-line="65" selection-end-column="69" />
+            <state relative-caret-position="204">
+              <caret line="65" column="24" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="24" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -327,12 +324,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1541836026297</updated>
-      <workItem from="1541836028331" duration="18630000" />
+      <workItem from="1541836028331" duration="18771000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18630000" />
+    <option name="totallyTimeSpent" value="18771000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -598,8 +595,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Settings/SettingsScreen.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="65" column="69" selection-start-line="65" selection-start-column="69" selection-end-line="65" selection-end-column="69" />
+        <state relative-caret-position="204">
+          <caret line="65" column="24" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="24" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
