@@ -47,7 +47,7 @@ export class FilterScrollView extends React.PureComponent {
 
     _keyExtractor = (item, index) => item.id;
 
-    _onPressItem = (id: string) => {
+    _onPressItem = (id) => {
         // updater functions are preferred for transactional updates
         this.setState((state) => {
             let a = {};
@@ -104,7 +104,7 @@ export class SearchView extends React.Component {
                     <View style={{
                         width: '100%',
                         height: 40,
-                        backgroundColor: "#ffffff",
+                        backgroundColor: "#2a2a2a",
                         zIndex: 100,
                     }}>
                         <TextInput
@@ -121,7 +121,7 @@ export class SearchView extends React.Component {
         }
 
         return (
-            <View style={{position: 'absolute', left: 0, width: '100%', height: 50}}>
+            <View style={{position: 'absolute', left: 0, width: '100%', height: 50, display: searchContent === null ? 'none' : 'flex'}}>
                 {searchContent}
             </View>
         );
