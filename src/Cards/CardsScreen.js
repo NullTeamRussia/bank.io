@@ -92,10 +92,6 @@ class CardsScreen extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-<<<<<<< HEAD
-    console.log(state)
-=======
->>>>>>> e87ac895384f1a703821698a39f11c3e5836cad4
     return {cards: state.cards.cards}
 };
 
