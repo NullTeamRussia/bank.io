@@ -6,7 +6,11 @@ import {FilterScrollView, SearchView} from "./SearchView";
 import { initCards } from "../Actions/init_cards"
 import {connect} from "react-redux"
 import { bindActionCreators } from 'redux';
+<<<<<<< HEAD
 import { retrieveCards, retrieveAutoIncrement } from "../Shared/Cards";
+=======
+import { retrieveCards, retrieveAutoIncrement, storeCards, storeAutoIncrement } from "../Shared/Cards";
+>>>>>>> e87ac895384f1a703821698a39f11c3e5836cad4
 
 class Header extends React.Component {
     constructor(props) {
@@ -134,7 +138,19 @@ class MainScreen extends React.Component {
     constructor(props) {
         super(props);
         retrieveCards((err, Cards) => {
+<<<<<<< HEAD
             retrieveAutoIncrement((err, AutoIncrement) => {
+=======
+            if (Cards === null) {
+                Cards = []
+                storeCards([])
+            }
+            retrieveAutoIncrement((err, AutoIncrement) => {
+                if (AutoIncrement === null) {
+                    AutoIncrement = 0
+                    storeAutoIncrement(0)
+                }
+>>>>>>> e87ac895384f1a703821698a39f11c3e5836cad4
                 initCards({Cards, AutoIncrement})
             })
         })

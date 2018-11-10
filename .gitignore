@@ -1,5 +1,12 @@
 node_modules
+<<<<<<< HEAD
 android/app/build
 android/.gradle
 .vscode
 .vs
+=======
+.vscode
+.vs
+ios
+android
+>>>>>>> e87ac895384f1a703821698a39f11c3e5836cad4
