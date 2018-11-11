@@ -87,7 +87,7 @@ class CardsScreen extends React.Component {
                             width: "50%",
                             alignSelf: "center",
                             textAlign: "center",
-                            marginTop: 40,
+                            marginTop: 55,
                             fontSize: 16
                         }}>Сбербанк#1</Text>
                     <TouchableWithoutFeedback>
@@ -102,7 +102,7 @@ class CardsScreen extends React.Component {
                             position: "absolute",
                             width: 25,
                             height: 25,
-                            left: 7,
+                            left: 10,
                             alignSelf: "flex-start",
                             bottom: 9,
                             fontSize: 20}}>₽</Text>
@@ -137,7 +137,7 @@ class CardsScreen extends React.Component {
                             width: "50%",
                             alignSelf: "center",
                             textAlign: "center",
-                            marginTop: 40,
+                            marginTop: 55,
                             fontSize: 16
                         }}>Сбербанк#2</Text>
                     <TouchableWithoutFeedback>
@@ -152,7 +152,7 @@ class CardsScreen extends React.Component {
                             position: "absolute",
                             width: 25,
                             height: 25,
-                            left: 7,
+                            left: 10,
                             alignSelf: "flex-start",
                             bottom: 9,
                             fontSize: 20}}>₽</Text>

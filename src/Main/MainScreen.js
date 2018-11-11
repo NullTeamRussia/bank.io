@@ -199,9 +199,15 @@ class MainScreen extends React.Component {
             // TODO HERE
             case "onFilterChange": {
                 this.setState({
-                    ATM: ATMs.filter(item => (
-                        (!this.props.sberbank && !this.props.vtb && !this.props.tinkoff && !this.props.cashless && !this.props.getMoney)
-                    ))
+                    ATM: ATMs.filter(item => {
+                        getMoney = true;
+                        alert("HERE")
+                        if (this.props.getMoney && !item.cashless) {
+                            getMoney = false;
+                        }
+                        return getMoney
+                        //(!this.props.sberbank && !this.props.vtb && !this.props.tinkoff && !this.props.cashless && !this.props.getMoney)
+                    })
                 });
                 return;
             }
