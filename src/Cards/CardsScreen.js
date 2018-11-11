@@ -4,6 +4,7 @@ import Card from "./Card";
 import { GoBackButton } from "../Shared/GoBackArrow";
 import { AddButton } from '../Shared/AddButton';
 import { connect } from 'react-redux';
+import { addCard } from "../Actions/add_card"
 
 class CardsScreenHeader extends React.Component {
     render() {
@@ -27,19 +28,7 @@ class CardsScreen extends React.Component {
         this.state = {
             isScrollEnabled: true
         }
-    }
-
-    enableCardAdding = () => {
-        this._ScrollView.scrollTo({x: 0, y: 0, animated: true})
-        this.setState({isScrollEnabled: false})  
-        this.props.cards.unshift({
-            Name: "Имя",
-            Bank: "Банк",
-            PaymentSystem: "Visa",
-            Currency: "Rubble",
-            IsNFC: true,
-            IsNew: true
-        })
+        console.log(this.props.cards);
     }
 
     render() {
@@ -60,7 +49,17 @@ class CardsScreen extends React.Component {
         return (
             <View style={cardsScreenStyle}>
                 <CardsScreenHeader/>
-                <AddButton onPress={this.enableCardAdding}></AddButton>
+                <AddButton onPress={() => {
+                    this._ScrollView.scrollTo({x: 0, y: 0, animated: true});
+                    this.props.addCard({
+                        Name: "Название",
+                        Bank: "sberbank",
+                        PaymentSystem: "mastercard",
+                        Currency: "RUB",
+                        IsNFC: true,
+                        IsNew: true
+                    })
+                }}></AddButton>
                 <GoBackButton navigation={this.props.navigation} dark={this.props.dark}/>
                 <ScrollView 
                     ref={component => this._ScrollView = component}
@@ -89,5 +88,9 @@ const mapStateToProps = (state) => {
     return {cards: state.cards.cards}
 };
 
-export default connect(mapStateToProps)(CardsScreen);
+const mapDispatchToProps = {
+    addCard
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardsScreen);
 

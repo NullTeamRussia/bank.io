@@ -3,6 +3,8 @@ import React from "react";
 import SimplePicker from 'react-native-simple-picker';
 import { connect } from 'react-redux';
 import { addCard } from "../Actions/add_card"
+import { updateCard } from "../Actions/update_card"
+import { deleteCard } from "../Actions/delete_card"
 
 
 class Card extends React.Component {
@@ -16,6 +18,7 @@ class Card extends React.Component {
         if (this.props.Card.IsNew) {
             this.state = {
                 Name: "",
+                IsNew: true,
                 nfcState: {
                     image: this.props.dark ? require('../../img/contactlessDark.png') : require('../../img/contactless.png'),
                     styles: {
@@ -108,7 +111,7 @@ class Card extends React.Component {
                     newPaymentSystemState = {
                         image: this.props.dark ? require('../../img/mastercardDark.png') : require('../../img/mastercard.png'),
                         styles: {
-                            position: "absolute",
+                            position: "relative",
                             width: 26,
                             height: 20,
                             right: 10,
@@ -168,7 +171,7 @@ class Card extends React.Component {
                     newPaymentSystemState = {
                         image: this.props.dark ? require('../../img/mastercardDark.png') : require('../../img/mastercard.png'),
                         styles: {
-                            position: "absolute",
+                            position: "relative",
                             width: 26,
                             height: 20,
                             right: 10,
@@ -311,6 +314,7 @@ class Card extends React.Component {
                 }
             }
             this.state = {
+                IsNew: false,
                 nfcState: newNfcState,
                 bankState: newBankState,
                 paymentSystemState: newPaymentSystemState,
@@ -455,11 +459,21 @@ class Card extends React.Component {
                     },
                     value: 'sberbank'
                 }
+                this.setState({cardStyle: {
+                    width: "100%",
+                    paddingLeft: 20,
+                    paddingRight: 20,
+                    height: 125,
+                    borderRadius: 11,
+                    marginBottom: 20,
+                    flex: 1,
+                    backgroundColor: this.props.dark ? '#111111' : '#3e9639'
+                }})
                 break
             }
             case('ВТБ'): {
                 newBankState = {
-                    image: this.props.dark ? require('../../img/vtbDark.png') : require('../../img/vtb.png'),
+                    image: require('../../img/vtbDark.png'),
                     style: {
                         position: "absolute",
                         width: 65,
@@ -470,6 +484,16 @@ class Card extends React.Component {
                     },
                     value: 'vtb'
                 }
+                this.setState({cardStyle: {
+                    width: "100%",
+                    paddingLeft: 20,
+                    paddingRight: 20,
+                    height: 125,
+                    borderRadius: 11,
+                    marginBottom: 20,
+                    flex: 1,
+                    backgroundColor: this.props.dark ? '#111111' : '#0d2c75'
+                }})
                 break
             }
             case('Тинькофф'): {
@@ -579,15 +603,11 @@ class Card extends React.Component {
         this.setState({currencyState: newCurrencyState})
     }
 
-    cancel = () => {
-        
-    }
-
     render() {
 
         return (
             <View style={this.state.cardStyle}>
-                {!this.props.Card.IsNew && 
+                {!this.state.IsNew && 
                     <Text style={{
                             color: 'white',
                             position: "absolute",
@@ -597,21 +617,21 @@ class Card extends React.Component {
                             marginTop: 40,
                             fontSize: 16
                         }}>{this.props.Card.Name}</Text>}
-                {!this.props.Card.IsNew && 
+                {!this.state.IsNew && 
                     <TouchableWithoutFeedback>
                         <Image style={this.state.bankState.style} source={this.state.bankState.image}/>
                     </TouchableWithoutFeedback>}
-                {!this.props.Card.IsNew && 
+                {!this.state.IsNew && 
                     <Text style={this.state.currencyState.styles}>{this.state.currencyState.image}</Text>}
-                {!this.props.Card.IsNew && 
+                {!this.state.IsNew && 
                     <TouchableWithoutFeedback>
                         <Image style={this.state.paymentSystemState.style} source={this.state.paymentSystemState.image}/>
                     </TouchableWithoutFeedback>}
-                {!this.props.Card.IsNew && 
+                {!this.state.IsNew && 
                     <TouchableWithoutFeedback>
                         <Image style={this.state.nfcState.style} source={this.state.nfcState.image}/>
                     </TouchableWithoutFeedback>}
-                {this.props.Card.IsNew && 
+                {this.state.IsNew && 
                     <TextInput 
                         style={{
                             color: 'white',
@@ -628,7 +648,7 @@ class Card extends React.Component {
                         placeholder={"Название"}
                         multiline={false}>
                     </TextInput>}
-                {this.props.Card.IsNew && 
+                {this.state.IsNew && 
                     <TouchableWithoutFeedback 
                         onPress={() => {
                             this.refs.bankPicker.show();
@@ -637,15 +657,17 @@ class Card extends React.Component {
                         source={this.state.bankState.image}
                         style={this.state.bankState.style}/>
                     </TouchableWithoutFeedback>}
-                {this.props.Card.IsNew && 
+                {this.state.IsNew && 
                     <SimplePicker
                         ref={'bankPicker'}
+                        confirmText={'Изменить'}
+                        cancelText={'Отмена'}
                         options={['Сбербанк','Тинькофф','ВТБ']}
                         onSubmit={(option) => {
                             this.changeBankState(option)
                         }}
                     />}
-                {this.props.Card.IsNew && 
+                {this.state.IsNew && 
                     <Text
                         style={this.state.currencyState.styles}
                         onPress={() => {
@@ -653,15 +675,17 @@ class Card extends React.Component {
                         }}
                     > {this.state.currencyState.image}
                     </Text>}
-                {this.props.Card.IsNew && 
+                {this.state.IsNew && 
                     <SimplePicker
                         ref={'currencyPicker'}
+                        confirmText={'Изменить'}
+                        cancelText={'Отмена'}
                         options={['Рубль','Евро','Доллар']}
                         onSubmit={(option) => {
                             this.changeCurrencyState(option)
                         }}
                     />}
-                 {this.props.Card.IsNew && 
+                 {this.state.IsNew && 
                     <TouchableWithoutFeedback 
                         onPress={() => {
                             this.refs.paymentSystemPicker.show();
@@ -670,34 +694,37 @@ class Card extends React.Component {
                         source={this.state.paymentSystemState.image}
                         style={this.state.paymentSystemState.styles}/>
                     </TouchableWithoutFeedback>}
-                {this.props.Card.IsNew && 
+                {this.state.IsNew && 
                     <SimplePicker
                         ref={'paymentSystemPicker'}
+                        confirmText={'Изменить'}
+                        cancelText={'Отмена'}
                         options={['MasterCard','Visa','МИР', 'AmericanExpress']}
                         onSubmit={(option) => {
                             this.changePaymentSystemState(option)
                         }}
                     />}
-                {this.props.Card.IsNew && 
+                {this.state.IsNew && 
                     <TouchableWithoutFeedback
                          onPress={() => {this.changeNfcState()}}>
                         <Image 
                             style={this.state.nfcState.styles}
                             source={this.state.nfcState.image}/>
                     </TouchableWithoutFeedback>}
-                {this.props.Card.IsNew && 
+                {this.state.IsNew && 
                     <TouchableWithoutFeedback
                         onPress={() => {
                             newCard = {
-                                Name: this.props.Card.Name,
+                                ID: this.props.Card.ID,
+                                Name: this.state.Name,
                                 Bank: this.state.bankState.value,
                                 PaymentSystem: this.state.paymentSystemState.value,
                                 Currency: this.state.currencyState.value,
-                                IsNFC: this.state.nfcState.value
+                                IsNFC: this.state.nfcState.value,
+                                IsNew: false
                             }
-                            alert("HERE")
-                            this.props.addCard(newCard)
-                            this.props.Card.IsNew = false;
+                            this.props.updateCard(newCard)
+                            this.setState({IsNew: false})
                         }}>
                         <Image 
                             style={{
@@ -710,9 +737,10 @@ class Card extends React.Component {
                             }}
                             source={require('../../img/done.png')}/>
                     </TouchableWithoutFeedback>}
-                {this.props.Card.IsNew && 
                     <TouchableWithoutFeedback 
-                        onPress={this.cancel()}>
+                        onPress={() => {
+                            this.props.deleteCard(this.props.Card.ID)
+                        }}>
                         <Image 
                             style={{
                                 position: "absolute",
@@ -723,7 +751,7 @@ class Card extends React.Component {
                                 right: 10,
                             }}
                             source={require('../../img/close.png')}/>
-                    </TouchableWithoutFeedback>}
+                    </TouchableWithoutFeedback>
             </View>
         );
     }
@@ -736,7 +764,9 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    addCard
+    addCard,
+    updateCard,
+    deleteCard
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Card)
