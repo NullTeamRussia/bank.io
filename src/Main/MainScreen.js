@@ -1,6 +1,6 @@
 import React from "react";
 import {StatusBar, Alert, Image, Platform, RefreshControl, Text, TouchableWithoutFeedback, View, ScrollView} from "react-native";
-import {styles, addr} from "../../consts";
+import {styles, addr, ATMs} from "../../consts";
 import {ModuleView} from "./ModuleView";
 import SearchView from "./SearchView";
 import FilterScrollView from "./FilterScrollView";
@@ -19,7 +19,7 @@ class Header extends React.Component {
     handler(msg, data) {
         switch (msg) {
             case "onChange": {
-
+                this.props.handler("","onFilterChange");
                 return;
             }
             case "open": {
@@ -144,6 +144,7 @@ class MainScreen extends React.Component {
             })
         })
         this.state = {
+            ATM: ATMs,
             popup: false,
             popupContent: null,
             data: {},
@@ -151,6 +152,7 @@ class MainScreen extends React.Component {
             loaded: false,
             header: "org",
             mainContent: null,
+            isFilter: false,
             filterContent: null,
             filtersSelect: {
                 bank: {
@@ -181,13 +183,25 @@ class MainScreen extends React.Component {
             }
             case "showFilters": {
                 this.setState({
+                    isFilter: true,
                     filterContent: data,
+
                 });
                 return;
             }
             case "hideFilters": {
                 this.setState({
+                    isFilter: false,
                     filterContent: null,
+                });
+                return;
+            }
+            // TODO HERE
+            case "onFilterChange": {
+                this.setState({
+                    ATM: ATMs.filter(item => (
+                        (!this.props.sberbank && !this.props.vtb && !this.props.tinkoff && !this.props.cashless && !this.props.getMoney)
+                    ))
                 });
                 return;
             }
@@ -247,7 +261,17 @@ class MainScreen extends React.Component {
                             scashless={this.props.cashless}
                             sgetMoney={this.props.getMoney}
                     />
-                    {this.state.mainContent || (
+                    {this.state.isFilter ?  (
+                        <View style={{paddingTop: 78}}>
+                            <ModuleView
+                                title="Результаты поиска"
+                                titleColor={this.props.dark ? "#c2c2c2" : "#2a2a2a"}
+                                content={this.state.ATM}
+                                color={this.props.dark ? "#171717" : "#fefefe"}
+                                handler={this.handler.bind(this)}
+                            />
+                        </View>
+                    ) : (
                         <View>
                             {/*<ModuleView*/}
                                 {/*handler={this.handler.bind(this)}*/}
@@ -261,7 +285,7 @@ class MainScreen extends React.Component {
                             <ModuleView
                                 title="Банкоматы"
                                 titleColor={this.props.dark ? "#c2c2c2" : "#2a2a2a"}
-                                content="atm"
+                                content={ATMs}
                                 color={this.props.dark ? "#171717" : "#fefefe"}
                                 handler={this.handler.bind(this)}
                             />
