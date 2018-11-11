@@ -27,7 +27,9 @@ export const ATMs = [
             "nfc"
         ],
         workingHours: "Открыто с 15:00 до 22:00",
-        available: false
+        available: false,
+        cashless: false,
+        nfc: true
     },
     {
         address: "Площадь Революции, 13/37",
@@ -54,6 +56,8 @@ export const ATMs = [
         ],
         workingHours: "Открыто круглосуточно",
         available: true,
+        cashless: true,
+        nfc: true
     },
 ];
 

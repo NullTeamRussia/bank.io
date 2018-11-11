@@ -1,6 +1,5 @@
 import {Animated, Image, Text, View, FlatList, TouchableWithoutFeedback} from "react-native";
 import React from "react";
-import {ATMs} from "../../consts";
 import {connect} from "react-redux";
 
 class CustomElement extends React.Component {
@@ -210,7 +209,7 @@ class ATMView extends React.PureComponent {
         return (
             <FlatList
                 handler={this.props.handler}
-                data={ATMs}
+                data={this.props.data}
                 renderItem={this._renderFlatListItem}
                 keyExtractor={(item, index) => index.toString()}
                 showsVerticalScrollIndicator={false}

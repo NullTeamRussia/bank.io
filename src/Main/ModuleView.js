@@ -1,35 +1,18 @@
 import React from "react";
 import {Text, View} from "react-native";
 import {Imgs} from "./Imgs";
-import {styles} from "../../consts";
+import {ATMs, styles} from "../../consts";
 import {MultiSelectList, MyListItem} from "./MainScreen";
 import ATMView from "./ATMView";
 
 
 class MyModuleContent extends React.PureComponent {
     render() {
-        if (this.props.type === "images")
-            return (
-                <View>
-                    <Text>
-                        lol
-                    </Text>
-                    {/*<Imgs handler={this.props.handler} state={this.props.state} {...this.props.state} />*/}
-                </View>
-            );
-        else if (this.props.type === "text")
-            return (
-                <View style={{height: 250}}>
-                    <Text>alo</Text>
-                </View>
-            );
-        else if (this.props.type === "atm") {
-            return (
-                <View>
-                    <ATMView handler={this.props.handler} />
-                </View>
-            );
-        }
+        return (
+            <View>
+                <ATMView data={this.props.content} handler={this.props.handler} />
+            </View>
+        );
     }
 }
 
@@ -68,7 +51,7 @@ export class ModuleView extends React.Component {
                 <TitleContent title={this.props.title} color={this.props.titleColor}/>
                 <MyModuleContent
                     handler={this.props.handler}
-                    type={this.props.content}
+                    content={this.props.content}
                     title={this.props.title}
                     color={this.props.color}
                     state={this.props.state}

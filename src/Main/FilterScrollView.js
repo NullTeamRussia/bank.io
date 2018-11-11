@@ -4,6 +4,7 @@ import connect from "react-redux/es/connect/connect";
 
 export class FilterElement extends React.PureComponent {
     _onPress = () => {
+        this.props.handler("onChange");
         this.props.onPressItem(this.props.id);
     };
 
@@ -48,12 +49,13 @@ class FilterScrollView extends React.PureComponent {
 
     _renderItem = ({item}) => (
         <FilterElement
+            handler={this.props.handler}
             dark={this.props.dark}
             id={item.id}
             onPressItem={(id) => {
-                this.props.changeSettings({key: id, value: this.props[id]});
                 let a = {};
                 a[id] = !this.state[id];
+                this.props.changeSettings({key: id, value: a[id]});
                 this.setState(a);
             }}
             selected={this.state[item.id]}
