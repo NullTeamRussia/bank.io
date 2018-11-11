@@ -249,11 +249,13 @@ class MapsScreen extends React.Component {
     render() {
         let a = this.props.navigation.getParam("content", (<Text>Error loading data.</Text>)).location;
         let b = {latitude: a.lat, longitude: a.long};
+        console.disableYellowBox = true;
         return (
             <View style={{
                 flex: 1,
+                backgroundColor: this.props.dark ? "#000" : "#fefefe",
             }}>
-                <GoBackButton navigation={this.props.navigation}/>
+                <GoBackButton navigation={this.props.navigation} dark={this.props.dark}/>
                 <MapView
                     ref={"mapview"}
                     customMapStyle={this.darkMapStyle}

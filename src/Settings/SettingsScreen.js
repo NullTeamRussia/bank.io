@@ -91,7 +91,7 @@ class SettingsScreen extends React.Component {
                 <StatusBar
                     barStyle={this.state.dark ? "light-content" : "dark-content"}
                 />
-                <GoBackButton navigation={this.props.navigation}/>
+                <GoBackButton navigation={this.props.navigation} dark={this.state.dark}/>
                 <SettingsScreenHeader dark={this.state.dark}/>
                 <View style={{
                     marginTop: 30,

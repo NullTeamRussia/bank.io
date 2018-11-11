@@ -9,13 +9,13 @@ export class FilterElement extends React.PureComponent {
 
     render() {
         const miniLogoStyles = {
-            borderRadius: 6,
+            borderRadius: 16,
             height: 32,
             justifyContent: 'center',
             alignItems:"center",
             borderWidth: 1.5,
             borderColor: "#18f",
-            marginRight: 13,
+            marginLeft: 15,
             paddingLeft: 15,
             paddingRight: 15,
             marginTop: 5,
@@ -61,18 +61,24 @@ class FilterScrollView extends React.PureComponent {
         />
     );
 
+    _renderFooter = () => (
+        <View style={{marginRight: 15}}>
+        </View>
+    );
+
+
     render() {
         return (
             <FlatList
                 horizontal={true}
                 bounces={false}
-                style={{paddingRight: 15, paddingLeft: 15}}
                 showsHorizontalScrollIndicator={false}
                 data={this.props.data}
                 extraData={this.state}
                 keyExtractor={this._keyExtractor}
                 renderItem={this._renderItem}
                 keyboardShouldPersistTaps={'handled'}
+                ListFooterComponent={this._renderFooter()}
             />
         );
     }
