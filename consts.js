@@ -59,6 +59,116 @@ export const ATMs = [
         cashless: true,
         nfc: true
     },
+    {
+        address: "Невский проспект, 25",
+        location: {
+            lat: 59.935260,
+            long: 30.322904,
+        },
+        currency: ["RUB"],
+        type: "atm",
+        banks: [
+            {
+                bank: "sberbank",
+                nalog: 5
+            },
+            {
+                bank: "tinkoff",
+                nalog: 0
+            },
+        ],
+        bank: "tinkoff",
+        providers: ["visa", "mastercard", "mir"],
+        custom: [
+        ],
+        workingHours: "Открыто круглосуточно",
+        available: false,
+        cashless: false,
+        nfc: false
+    },
+    {
+        address: "Невский проспект, 25",
+        location: {
+            lat: 59.935112,
+            long: 30.323418,
+        },
+        currency: ["RUB"],
+        type: "atm",
+        banks: [
+            {
+                bank: "sberbank",
+                nalog: 0
+            },
+            {
+                bank: "tinkoff",
+                nalog: 0
+            },
+        ],
+        bank: "sberbank",
+        providers: ["visa", "mastercard", "ae", "mir"],
+        custom: [
+            "nfc"
+        ],
+        workingHours: "Открыто с 08:00 до 20:00",
+        available: true,
+        cashless: false,
+        nfc: true
+    },{
+        address: "Наб. реки Мойки, 50",
+        location: {
+            lat: 59.933951,
+            long: 30.318300,
+        },
+        currency: ["RUB"],
+        type: "atm",
+        banks: [
+            {
+                bank: "sberbank",
+                nalog: 0
+            },
+            {
+                bank: "tinkoff",
+                nalog: 0
+            },
+            
+        ],
+        bank: "sberbank",
+        providers: ["visa", "mastercard", "ae", "mir"],
+        custom: [
+            "nfc"
+        ],
+        workingHours: "Открыто с 07:00 до 22:00",
+        available: true,
+        cashless: false,
+        nfc: true
+    },{
+        address: "Большая конюшенная, 8",
+        location: {
+            lat: 59.937849,
+            long: 30.323473,
+        },
+        currency: ["DOLL"],
+        type: "magaz",
+        banks: [
+            {
+                bank: "sberbank",
+                nalog: 0
+            },
+            {
+                bank: "tinkoff",
+                nalog: 0
+            },
+        ],
+        providers: ["visa", "mastercard", "mir"],
+        custom: [
+            "nfc",
+            "cashless"
+        ],
+        workingHours: "Открыто с 07:00 до 22:00",
+        available: true,
+        cashless: true,
+        nfc: true
+    },
 ];
 
 export const styles = StyleSheet.create({
