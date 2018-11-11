@@ -9,7 +9,7 @@ class CardsScreenHeader extends React.Component {
     render() {
         return (
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
-                <Text style={{fontSize: 25, fontWeight: 'bold', color: '#272727', marginLeft: -12}}>Мои карты</Text>
+                <Text style={{fontSize: 25, fontWeight: 'bold', color: !this.props.dark ? "#2a2a2a" : "#eaeaea", marginLeft: -12}}>Мои карты</Text>
             </View>
         );
     }
@@ -37,7 +37,7 @@ class CardsScreen extends React.Component {
             width: '100%',
             height: '100%',
             position: 'absolute',
-            backgroundColor: "#ffffff",
+            backgroundColor: this.props.dark ? "#2a2a2a" : "#eaeaea",
             zIndex: 1000,
             display: "flex",
             paddingTop: 50,
@@ -47,7 +47,7 @@ class CardsScreen extends React.Component {
 
         return (
             <View style={cardsScreenStyle}>
-                <CardsScreenHeader/>
+                <CardsScreenHeader dark={this.props.dark}/>
                 <AddButton onPress={() => {
                     this.props.cards.unshift({
                         Name: "Название",
