@@ -5,11 +5,11 @@ export class GoBackButton extends React.Component {
     render() {
         return (
             <TouchableWithoutFeedback onPress={() => (this.props.navigation.goBack())}>
-                <Image source={require('../../img/arrow_back.png')} style={{
-                    width: 30,
-                    height: 30,
+                <Image source={this.props.dark ? require('../../img/backDark.png') : require('../../img/back.png')} style={{
+                    width: 20,
+                    height: 20,
                     position: 'absolute',
-                    marginTop: 50,
+                    marginTop: 57.5,
                     marginLeft: 10,
                     zIndex: 1000,
                 }}/>

@@ -28,7 +28,9 @@ class Header extends React.Component {
                 });
 
                 let filter1content = [
-                    // {id: "bank", title: 'Банк'},
+                    {id: "sberbank", title: 'Сбербанк'},
+                    {id: "tinkoff", title: 'Тинькофф'},
+                    {id: "vtb", title: 'ВТБ'},
                     {id: "cashless", title: 'Бесконтактная оплата'},
                     {id: "getMoney", title: 'Выдача наличных на кассе'},
                 ];
@@ -44,7 +46,7 @@ class Header extends React.Component {
                     }}
                     >
                         <Text style={{marginLeft: 15, color: this.props.dark ? '#fefefe' : '#696969'}}>Фильтры:</Text>
-                        <View style={{justifyContent: 'center', flexDirection: "column", paddingRight: 15}}>
+                        <View style={{justifyContent: 'center', flexDirection: "column"}}>
                             <FilterScrollView data={filter1content}
                                               filtersSelect={this.props.filtersSelect}
                                               handler={this.handler.bind(this)}
@@ -89,11 +91,11 @@ class Header extends React.Component {
                 </View>
 
                 <TouchableWithoutFeedback onPress={() => (this.props.handler("", "openSettings"))}>
-                    <Image source={require("../../img/settings.png")} style={{
-                        height: 22,
-                        width: 22,
+                    <Image source={this.props.dark ? require("../../img/settingsDark.png") : require("../../img/settings.png")} style={{
+                        height: 18,
+                        width: 18,
                         right: 16,
-                        bottom: 13.5,
+                        bottom: 15,
                         position: 'absolute',
                     }}/>
                 </TouchableWithoutFeedback>
@@ -102,14 +104,14 @@ class Header extends React.Component {
                         height: 20,
                         width: 20,
                         left: 16,
-                        bottom: 13.5,
+                        bottom: 15,
                         position: 'absolute',
                         zIndex: 100
                     }}>
                         <Image style={{
                             height: 20,
                             width: 20,
-                        }} source={require("../../img/search.png")}/>
+                        }} source={this.props.dark ? require("../../img/searchDark.png") : require("../../img/search.png")}/>
                     </View>
                 </TouchableWithoutFeedback>
                 <SearchView handler={this.handler.bind(this)} isSearch={this.state.isSearch} />

@@ -3,13 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="c652b32f-8678-41bc-839d-b40f8847a991" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consts.js" beforeDir="false" afterPath="$PROJECT_DIR$/consts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/close.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/close.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/search.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/search.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/settings.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/settings.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/bankio.xcworkspace/xcuserdata/geowatson.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/ios/bankio.xcworkspace/xcuserdata/geowatson.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cards/CardsScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cards/CardsScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/ATMView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/ATMView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/FilterScrollView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/FilterScrollView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/MainScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/MainScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/SearchView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/SearchView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Maps/MapsScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Maps/MapsScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settings/SettingsScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settings/SettingsScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shared/GoBackArrow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/GoBackArrow.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,7 +37,7 @@
         <counts>
           <entry key="JSON" value="2" />
           <entry key="JSX Harmony" value="1" />
-          <entry key="JavaScript" value="78" />
+          <entry key="JavaScript" value="87" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="TypeScript" value="1" />
         </counts>
@@ -41,7 +46,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="14" />
-          <entry key="JavaScript" value="8548" />
+          <entry key="JavaScript" value="9630" />
           <entry key="PLAIN_TEXT" value="7" />
         </counts>
       </usages-collector>
@@ -50,7 +55,7 @@
         <counts>
           <entry key="Podfile" value="1" />
           <entry key="gitignore" value="1" />
-          <entry key="js" value="78" />
+          <entry key="js" value="87" />
           <entry key="json" value="2" />
           <entry key="settingsReducer" value="1" />
           <entry key="ts" value="1" />
@@ -59,7 +64,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Podfile" value="7" />
-          <entry key="js" value="8548" />
+          <entry key="js" value="9630" />
           <entry key="json" value="14" />
         </counts>
       </usages-collector>
@@ -68,66 +73,24 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main/SearchView.js">
+        <entry file="file://$PROJECT_DIR$/src/Main/MainScreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="1" column="7" lean-forward="true" selection-start-line="1" selection-end-line="2" />
+            <state relative-caret-position="323">
+              <caret line="267" column="33" lean-forward="true" selection-start-line="267" selection-start-column="33" selection-end-line="267" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Main/FilterScrollView.js">
+        <entry file="file://$PROJECT_DIR$/src/Main/ATMView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="42" column="37" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
+            <state relative-caret-position="16">
+              <caret line="119" column="29" selection-start-line="119" selection-start-column="29" selection-end-line="119" selection-end-column="29" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main/MainScreen.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="50" column="68" selection-start-line="50" selection-start-column="68" selection-end-line="50" selection-end-column="68" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Reducers/filterReducer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="12" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Settings/SettingsScreen.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-427">
-              <caret line="49" column="28" lean-forward="true" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Maps/MapsScreen.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#0#83#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -152,6 +115,8 @@
       <find>Filte</find>
       <find>Filters:</find>
       <find>filter2Id</find>
+      <find>paddingRight</find>
+      <find>marginRight</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -164,24 +129,24 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/ios/Podfile" />
         <option value="$PROJECT_DIR$/src/Reducers/cardsReducer.js" />
-        <option value="$PROJECT_DIR$/src/Cards/CardsScreen.js" />
         <option value="$PROJECT_DIR$/src/Actions/types.js" />
         <option value="$PROJECT_DIR$/src/Reducers/settingsReducer.js" />
         <option value="$PROJECT_DIR$/src/Actions/darkTheme.js" />
-        <option value="$PROJECT_DIR$/src/Shared/GoBackArrow.js" />
         <option value="$PROJECT_DIR$/src/Main/ModuleView.js" />
         <option value="$PROJECT_DIR$/AppNavigator.js" />
-        <option value="$PROJECT_DIR$/src/Main/ATMView.js" />
-        <option value="$PROJECT_DIR$/consts.js" />
         <option value="$PROJECT_DIR$/src/Main/ATMExtendedView.js" />
-        <option value="$PROJECT_DIR$/src/Maps/MapsScreen.js" />
         <option value="$PROJECT_DIR$/store.js" />
         <option value="$PROJECT_DIR$/index.js" />
-        <option value="$PROJECT_DIR$/src/Settings/SettingsScreen.js" />
-        <option value="$PROJECT_DIR$/src/Main/SearchView.js" />
         <option value="$PROJECT_DIR$/src/Reducers/filterReducer.js" />
-        <option value="$PROJECT_DIR$/src/Main/MainScreen.js" />
+        <option value="$PROJECT_DIR$/consts.js" />
         <option value="$PROJECT_DIR$/src/Main/FilterScrollView.js" />
+        <option value="$PROJECT_DIR$/src/Maps/MapsScreen.js" />
+        <option value="$PROJECT_DIR$/src/Cards/CardsScreen.js" />
+        <option value="$PROJECT_DIR$/src/Main/MainScreen.js" />
+        <option value="$PROJECT_DIR$/src/Main/SearchView.js" />
+        <option value="$PROJECT_DIR$/src/Settings/SettingsScreen.js" />
+        <option value="$PROJECT_DIR$/src/Shared/GoBackArrow.js" />
+        <option value="$PROJECT_DIR$/src/Main/ATMView.js" />
       </list>
     </option>
   </component>
@@ -298,12 +263,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1541836026297</updated>
-      <workItem from="1541836028331" duration="48336000" />
+      <workItem from="1541836028331" duration="55612000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48336000" />
+    <option name="totallyTimeSpent" value="55612000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -429,36 +394,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/ModuleView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-337">
-          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/ATMView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2182">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/Imgs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -472,39 +407,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/consts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/store.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
           <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
           <folding>
             <element signature="e#0#70#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AppNavigator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-          <folding>
-            <element signature="e#76#102#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Shared/GoBackArrow.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#67#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -530,13 +438,6 @@
           <folding>
             <element signature="e#0#56#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cards/CardsScreen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -577,16 +478,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Maps/MapsScreen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="173">
@@ -597,27 +488,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/SearchView.js">
+    <entry file="file://$PROJECT_DIR$/consts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="7" lean-forward="true" selection-start-line="1" selection-end-line="2" />
+        <state relative-caret-position="773">
+          <caret line="56" column="6" selection-start-line="56" selection-start-column="6" selection-end-line="56" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/MainScreen.js">
+    <entry file="file://$PROJECT_DIR$/src/Main/ModuleView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="50" column="68" selection-start-line="50" selection-start-column="68" selection-end-line="50" selection-end-column="68" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Settings/SettingsScreen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-427">
-          <caret line="49" column="28" lean-forward="true" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
+        <state relative-caret-position="-187">
+          <caret line="27" column="21" lean-forward="true" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -626,17 +507,107 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Reducers/filterReducer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="12" />
+        <state relative-caret-position="150">
+          <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AppNavigator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="3" lean-forward="true" selection-start-column="3" selection-end-column="3" />
+          <folding>
+            <element signature="e#76#102#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main/FilterScrollView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="42" column="37" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
+        <state relative-caret-position="51">
+          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main/Imgs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1045">
+          <caret line="90" column="41" lean-forward="true" selection-start-line="90" selection-start-column="41" selection-end-line="90" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Settings/SettingsScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1315">
+          <caret line="97" column="19" lean-forward="true" selection-start-line="97" selection-start-column="19" selection-end-line="97" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Shared/GoBackArrow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#67#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cards/CardsScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="975">
+          <caret line="65" column="87" selection-start-line="65" selection-start-column="87" selection-end-line="65" selection-end-column="87" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Maps/MapsScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="653">
+          <caret line="257" column="23" lean-forward="true" selection-start-line="257" selection-start-column="23" selection-end-line="257" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main/SearchView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="38" column="48" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main/MainScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="267" column="33" lean-forward="true" selection-start-line="267" selection-start-column="33" selection-end-line="267" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main/ATMView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="119" column="29" selection-start-line="119" selection-start-column="29" selection-end-line="119" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#83#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -61,7 +61,7 @@ class CardsScreen extends React.Component {
             <View style={cardsScreenStyle}>
                 <CardsScreenHeader/>
                 <AddButton onPress={this.enableCardAdding}></AddButton>
-                <GoBackButton navigation={this.props.navigation}/>
+                <GoBackButton navigation={this.props.navigation} dark={this.props.dark}/>
                 <ScrollView 
                     ref={component => this._ScrollView = component}
                     style={{

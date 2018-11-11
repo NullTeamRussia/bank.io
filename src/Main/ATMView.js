@@ -1,4 +1,4 @@
-import {Image, Text, View, FlatList, TouchableWithoutFeedback} from "react-native";
+import {Animated, Image, Text, View, FlatList, TouchableWithoutFeedback} from "react-native";
 import React from "react";
 import {ATMs} from "../../consts";
 import {connect} from "react-redux";
@@ -107,17 +107,57 @@ class ProvidersAvailable extends React.Component {
 }
 
 class ATMElement extends React.Component {
+    state = {
+        animX: new Animated.Value(1),
+        animY: new Animated.Value(1),
+    };
+
+    _animIn() {
+        Animated.timing(
+            this.state.animY,
+            {
+                toValue: 0.9,
+                duration: 200
+            }
+        ).start();
+        Animated.timing(
+            this.state.animX,
+            {
+                toValue: 0.9,
+                duration: 200
+            }
+        ).start();
+    }
+    _animOut() {
+        Animated.timing(
+            this.state.animY,
+            {
+                toValue: 1,
+                duration: 200
+            }
+        ).start();
+        Animated.timing(
+            this.state.animX,
+            {
+                toValue: 1,
+                duration: 200
+            }
+        ).start();
+    }
+
     render() {
         const leftImage = this.props.item.type === "atm" ? require("../../img/atm.png") : require("../../img/cashback.png");
         const leftText = this.props.item.type === "atm" ? "ATM" : "Касса";
         return (
-            <TouchableWithoutFeedback onPress={() => this.props.handler(this.props.item, "atmInfo")} style={{height: '100%', width: '100%'}}>
-                <View style={{
-                    width: "100%",
-                    height: 125,
-                    backgroundColor: this.props.dark ? "#111111" : "#f1f1f1",
-                    marginBottom: 20,
-                    borderRadius: 11
+            <TouchableWithoutFeedback onPressIn={() => this._animIn()} onPressOut={() => this._animOut()} onPress={() => this.props.handler(this.props.item, "atmInfo")} style={{height: '100%', width: '100%'}}>
+                <Animated.View
+                    style={{
+                        width: "100%",
+                        height: 125,
+                        backgroundColor: this.props.dark ? "#111111" : "#f1f1f1",
+                        marginBottom: 20,
+                        borderRadius: 11,
+                        transform:[{scaleX: this.state.animX}, {scaleY: this.state.animY}]
                 }}>
                     <Text style={{
                         fontSize: 13,
@@ -150,7 +190,7 @@ class ATMElement extends React.Component {
                         <ProvidersAvailable dark={this.props.dark} item={this.props.item} data={this.props.item.banks} />
                     </View>
                     <CustomPropsView dark={this.props.dark} item={this.props.item} data={this.props.item.custom} />
-                </View>
+                </Animated.View>
             </TouchableWithoutFeedback>
         );
     }

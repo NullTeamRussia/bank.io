@@ -14,7 +14,7 @@ class SearchView extends React.Component {
                         height: 22,
                         width: 22,
                     }}>
-                        <Image source={require("../../img/close.png")} style={{
+                        <Image source={this.props.dark ? require("../../img/closeDark.png") : require("../../img/close.png")} style={{
                             height: 20,
                             width: 20,
                             position: 'absolute',
@@ -26,7 +26,7 @@ class SearchView extends React.Component {
                     <View style={{
                         width: '100%',
                         height: 40,
-                        backgroundColor: "#2a2a2a",
+                        backgroundColor: this.props.dark ? "#2a2a2a" : "#fefefe",
                         zIndex: 100,
                     }}>
                         <TextInput
@@ -35,7 +35,8 @@ class SearchView extends React.Component {
                             maxLength={60}
                             style={{
                                 paddingTop: 17,
-                                paddingLeft: 43
+                                paddingLeft: 43,
+                                paddingRight: 43
                             }}/>
                     </View>
                 </View>
@@ -54,11 +55,6 @@ class SearchView extends React.Component {
 const mapStateToProps = (state) => {
     return {
         dark: state.settings.dark,
-        sberbank: state.filters.sberbank,
-        tinkoff: state.filters.tinkoff,
-        vtb: state.filters.vtb,
-        cashless: state.filters.cashless,
-        getMoney: state.filters.getMoney,
     }
 };
 
