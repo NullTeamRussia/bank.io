@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, ScrollView, TouchableWithoutFeedback, Image } from "react-native"
-import Card from "./Card";
 import { GoBackButton } from "../Shared/GoBackArrow";
 import { AddButton } from '../Shared/AddButton';
 import { connect } from 'react-redux';
@@ -26,9 +25,9 @@ class CardsScreen extends React.Component {
         super(props);
 
         this.state = {
-            isScrollEnabled: true
+            isScrollEnabled: true,
+            isEnabled: false
         }
-        console.log(this.props.cards);
     }
 
     render() {
@@ -50,8 +49,7 @@ class CardsScreen extends React.Component {
             <View style={cardsScreenStyle}>
                 <CardsScreenHeader/>
                 <AddButton onPress={() => {
-                    this._ScrollView.scrollTo({x: 0, y: 0, animated: true});
-                    this.props.addCard({
+                    this.props.cards.unshift({
                         Name: "Название",
                         Bank: "sberbank",
                         PaymentSystem: "mastercard",
@@ -75,9 +73,106 @@ class CardsScreen extends React.Component {
                     showsVerticalScrollIndicator={false}
                     scrollEnabled={this.state.isScrollEnabled}
                 >   
-                    {this.props.cards.map(card => (
-                        <Card Card={card}></Card>
-                    ))}
+                   <View style={{width: "100%",
+                    paddingLeft: 20,
+                    paddingRight: 20,
+                    height: 125,
+                    borderRadius: 11,
+                    marginBottom: 20,
+                    flex: 1,
+                    backgroundColor: this.props.dark ? '#111111' : '#3e9639'}}>
+                    <Text style={{
+                            color: 'white',
+                            position: "absolute",
+                            width: "50%",
+                            alignSelf: "center",
+                            textAlign: "center",
+                            marginTop: 40,
+                            fontSize: 16
+                        }}>Сбербанк#1</Text>
+                    <TouchableWithoutFeedback>
+                        <Image style={{position: "absolute",
+                            width: 120,
+                            height: 23,
+                            left: 10,
+                            alignSelf: "flex-start",
+                            top: 12}} source={require('../../img/sberbankDark.png')}/>
+                    </TouchableWithoutFeedback>
+                    <Text style={{color: 'white',
+                            position: "absolute",
+                            width: 25,
+                            height: 25,
+                            left: 7,
+                            alignSelf: "flex-start",
+                            bottom: 9,
+                            fontSize: 20}}>₽</Text>
+                    <TouchableWithoutFeedback>
+                        <Image style={{ position: "absolute",
+                            width: 26,
+                            height: 20,
+                            right: 10,
+                            alignSelf: "flex-end",
+                            bottom: 10}} source={this.props.dark ? require('../../img/mastercardDark.png') : require('../../img/mastercard.png')}/>
+                    </TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback>
+                        <Image style={{height: 25,
+                        width: 25,
+                        alignSelf: "flex-end",
+                        marginTop: 53,
+                        right: 10,
+                        position: "absolute",}} source={this.props.dark ? require('../../img/contactlessDark.png') : require('../../img/contactless.png')}/>
+                    </TouchableWithoutFeedback>
+                   </View>
+                   <View style={{width: "100%",
+                    paddingLeft: 20,
+                    paddingRight: 20,
+                    height: 125,
+                    borderRadius: 11,
+                    marginBottom: 20,
+                    flex: 1,
+                    backgroundColor: this.props.dark ? '#111111' : '#3e9639'}}>
+                    <Text style={{
+                            color: 'white',
+                            position: "absolute",
+                            width: "50%",
+                            alignSelf: "center",
+                            textAlign: "center",
+                            marginTop: 40,
+                            fontSize: 16
+                        }}>Сбербанк#2</Text>
+                    <TouchableWithoutFeedback>
+                        <Image style={{position: "absolute",
+                            width: 120,
+                            height: 23,
+                            left: 10,
+                            alignSelf: "flex-start",
+                            top: 12}} source={require('../../img/sberbankDark.png')}/>
+                    </TouchableWithoutFeedback>
+                    <Text style={{color: 'white',
+                            position: "absolute",
+                            width: 25,
+                            height: 25,
+                            left: 7,
+                            alignSelf: "flex-start",
+                            bottom: 9,
+                            fontSize: 20}}>₽</Text>
+                    <TouchableWithoutFeedback>
+                        <Image style={{ position: "absolute",
+                            width: 37,
+                            height: 17,
+                            right: 10,
+                            alignSelf: "flex-end",
+                            bottom: 10}} source={this.props.dark ? require('../../img/visaDark.png') : require('../../img/visa.png')}/>
+                    </TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback>
+                        <Image style={{height: 25,
+                        width: 25,
+                        alignSelf: "flex-end",
+                        marginTop: 53,
+                        right: 10,
+                        position: "absolute",}} source={this.props.dark ? require('../../img/contactlessDark.png') : require('../../img/contactless.png')}/>
+                    </TouchableWithoutFeedback>
+                   </View>
                 </ScrollView>
             </View>
         );
@@ -85,7 +180,7 @@ class CardsScreen extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return {cards: state.cards.cards}
+    return {cards: state.cards.cards, dark: state.settings.dark}
 };
 
 const mapDispatchToProps = {

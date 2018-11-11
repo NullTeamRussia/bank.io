@@ -111,7 +111,7 @@ class Card extends React.Component {
                     newPaymentSystemState = {
                         image: this.props.dark ? require('../../img/mastercardDark.png') : require('../../img/mastercard.png'),
                         styles: {
-                            position: "relative",
+                            position: "absolute",
                             width: 26,
                             height: 20,
                             right: 10,
