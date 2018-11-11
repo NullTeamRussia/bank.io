@@ -19,7 +19,7 @@ class Header extends React.Component {
     handler(msg, data) {
         switch (msg) {
             case "onChange": {
-                this.props.handler("","onFilterChange");
+                this.props.handler(data, "onFilterChange");
                 return;
             }
             case "open": {
@@ -77,7 +77,7 @@ class Header extends React.Component {
         }
         return (
             <View style={{
-                backgroundColor: this.props.dark ? "#2a2a2a" : "#908ee4",
+                backgroundColor: this.props.dark ? "#2a2a2a" : "#ffffff",
                 width: '100%',
                 alignItems: 'center',
                 justifyContent: 'flex-end',
@@ -85,7 +85,7 @@ class Header extends React.Component {
                 paddingBottom: 10,
             }}>
                 <View style={{flex: 1}}>
-                    <Text style={{fontSize: 25, fontWeight: 'bold', color: this.props.dark ? '#ffffff' : '#f8f8f8'}}>
+                    <Text style={{fontSize: 25, fontWeight: 'bold', color: this.props.dark ? '#ffffff' : '#2f2f2f'}}>
                         {header}
                     </Text>
                 </View>
@@ -237,7 +237,7 @@ class MainScreen extends React.Component {
         return(
             <View style={{
                 flex: 1,
-                backgroundColor: this.props.dark ? '#2a2a2a' : '#908ee4'
+                backgroundColor: this.props.dark ? '#2a2a2a' : '#ffffff'
             }}>
                 <StatusBar
                     barStyle={this.props.dark ? "light-content" : "dark-content"}
@@ -245,7 +245,7 @@ class MainScreen extends React.Component {
                 <View style={{
                     height: 45,
                     width: '100%',
-                    backgroundColor: this.props.dark ? '#2a2a2a' : '#908ee4',
+                    backgroundColor: this.props.dark ? '#2a2a2a' : '#ffffff',
                     display: Platform.OS === 'android' ? 'none' : 'flex'
                 }}/>
                 <ScrollView keyboardShouldPersistTaps={'handled'} refreshControl={
@@ -291,7 +291,7 @@ class MainScreen extends React.Component {
                             <ModuleView
                                 title="Банкоматы"
                                 titleColor={this.props.dark ? "#c2c2c2" : "#2a2a2a"}
-                                content={ATMs}
+                                content={ATMs.slice(0,4)}
                                 color={this.props.dark ? "#171717" : "#fefefe"}
                                 handler={this.handler.bind(this)}
                             />
