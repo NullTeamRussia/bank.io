@@ -1,88 +1,10 @@
 import React from "react";
 import {FlatList, Image, Text, TextInput, TouchableWithoutFeedback, View} from "react-native";
+import connect from "react-redux/es/connect/connect";
+import {addCard} from "../Actions/add_card";
+import {ADD_CARD} from "../Actions/types";
 
-
-export class FilterElement extends React.PureComponent {
-    _onPress = () => {
-        this.props.onPressItem(this.props.id);
-    };
-
-    render() {
-        const miniLogoStyles = {
-            borderRadius: 6,
-            height: 32,
-            justifyContent: 'center',
-            alignItems:"center",
-            borderWidth: 1.5,
-            borderColor: "#18f",
-            marginRight: 13,
-            paddingLeft: 15,
-            paddingRight: 15,
-            marginTop: 5,
-        };
-
-        const textColor = this.props.selected ? "#fff" : "#18f";
-        const bgColor = this.props.selected ? "#18f" : "#fff";
-        return (
-            <TouchableWithoutFeedback onPress={this._onPress}>
-                <View style={{...miniLogoStyles, backgroundColor: bgColor}}>
-                    <Text style={{ color: textColor }}>
-                        {this.props.title}
-                    </Text>
-                </View>
-            </TouchableWithoutFeedback>
-        );
-    }
-}
-
-export class FilterScrollView extends React.PureComponent {
-    state = {
-        bank: {
-            sber: false,
-            tinkof: false
-        },
-        paypass: false,
-        getMoney: true,
-    };
-
-    _keyExtractor = (item, index) => item.id;
-
-    _onPressItem = (id) => {
-        // updater functions are preferred for transactional updates
-        this.setState((state) => {
-            let a = {};
-            a[id] = !state[id];
-            return a;
-        });
-    };
-
-    _renderItem = ({item}) => (
-        <FilterElement
-            id={item.id}
-            onPressItem={this._onPressItem}
-            selected={this.state[item.id]}
-            title={item.title}
-        />
-    );
-
-    render() {
-        return (
-            <FlatList
-                horizontal={true}
-                bounces={false}
-                style={{paddingRight: 15, paddingLeft: 15}}
-                showsHorizontalScrollIndicator={false}
-                data={this.props.data}
-                extraData={this.state}
-                keyExtractor={this._keyExtractor}
-                renderItem={this._renderItem}
-                keyboardShouldPersistTaps={'handled'}
-            />
-        );
-    }
-}
-
-export class SearchView extends React.Component {
+class SearchView extends React.Component {
     render() {
         let searchContent = null;
         if (this.props.isSearch) {
@@ -127,3 +49,17 @@ export class SearchView extends React.Component {
         );
     }
 }
+
+
+const mapStateToProps = (state) => {
+    return {
+        dark: state.settings.dark,
+        sberbank: state.filters.sberbank,
+        tinkoff: state.filters.tinkoff,
+        vtb: state.filters.vtb,
+        cashless: state.filters.cashless,
+        getMoney: state.filters.getMoney,
+    }
+};
+
+export default connect(mapStateToProps)(SearchView);
