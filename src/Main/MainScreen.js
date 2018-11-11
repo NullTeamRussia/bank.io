@@ -2,7 +2,8 @@ import React from "react";
 import {StatusBar, Alert, Image, Platform, RefreshControl, Text, TouchableWithoutFeedback, View, ScrollView} from "react-native";
 import {styles, addr} from "../../consts";
 import {ModuleView} from "./ModuleView";
-import {FilterScrollView, SearchView} from "./SearchView";
+import SearchView from "./SearchView";
+import FilterScrollView from "./FilterScrollView";
 import { initCards } from "../Actions/init_cards"
 import {connect} from "react-redux"
 import { bindActionCreators } from 'redux';
@@ -28,35 +29,27 @@ class Header extends React.Component {
 
                 let filter1content = [
                     // {id: "bank", title: 'Банк'},
-                    {id: "paypass", title: 'Бесконтактная оплата'},
+                    {id: "cashless", title: 'Бесконтактная оплата'},
                     {id: "getMoney", title: 'Выдача наличных на кассе'},
                 ];
-                let filter2content = null;
-                switch (this.props.filtersSelect.filter2Id) {
-                    case "bank":
-                        filter2content = [
-                            {id: "sber", title: 'Сбербанк'},
-                            {id: "tinkof", title: 'Тинькофф'},
-                        ]
-                }
 
                 let searchFilters = (
                     <View style={{
                         position: 'absolute',
                         width: '100%',
-                        backgroundColor: '#fefefe',
+                        backgroundColor: this.props.dark ? '#2a2a2a' : '#fefefe',
                         top: 40,
-                        height: 115,
+                        height: 70,
                         zIndex: 102
                     }}
                     >
-                        <Text style={{marginLeft: 15, color: '#696969'}}>Filters:</Text>
+                        <Text style={{marginLeft: 15, color: this.props.dark ? '#fefefe' : '#696969'}}>Фильтры:</Text>
                         <View style={{justifyContent: 'center', flexDirection: "column", paddingRight: 15}}>
                             <FilterScrollView data={filter1content}
                                               filtersSelect={this.props.filtersSelect}
                                               handler={this.handler.bind(this)}
+                                              dark={this.props.dark}
                             />
-                            {/*<FilterScrollView data={filter2content} filter={this.props.filtersSelect} />*/}
                         </View>
                     </View>
                 );
@@ -90,7 +83,7 @@ class Header extends React.Component {
                 paddingBottom: 10,
             }}>
                 <View style={{flex: 1}}>
-                    <Text style={{fontSize: 25, fontWeight: 'bold', color: this.props.dark ? '#d3d3d3' : '#f8f8f8'}}>
+                    <Text style={{fontSize: 25, fontWeight: 'bold', color: this.props.dark ? '#ffffff' : '#f8f8f8'}}>
                         {header}
                     </Text>
                 </View>
@@ -158,16 +151,12 @@ class MainScreen extends React.Component {
             mainContent: null,
             filterContent: null,
             filtersSelect: {
-                filter2: false,
-                filter2Id: null,
-                data: {
-                    bank: {
-                        sber: false,
-                        tinkof: false
-                    },
-                    paypass: false,
-                    getMoney: true,
-                }
+                bank: {
+                    sber: false,
+                    tinkof: false
+                },
+                paypass: false,
+                getMoney: true,
             }
         };
 
@@ -246,7 +235,16 @@ class MainScreen extends React.Component {
                     />
                 }>
                     {this.state.filterContent}
-                    <Header dark={this.props.dark} title={this.state.header} handler={this.handler.bind(this)} filtersSelect={this.state.filtersSelect}/>
+                    <Header dark={this.props.dark}
+                            title={this.state.header}
+                            filtersSelect={this.props.filtersSelect}
+                            handler={this.handler.bind(this)}
+                            ssberbank={this.props.sberbank}
+                            stinkoff={this.props.tinkoff}
+                            svtb={this.props.vtb}
+                            scashless={this.props.cashless}
+                            sgetMoney={this.props.getMoney}
+                    />
                     {this.state.mainContent || (
                         <View>
                             {/*<ModuleView*/}
@@ -274,7 +272,14 @@ class MainScreen extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return {dark: state.settings.dark}
+    return {
+        dark: state.settings.dark,
+        sberbank: state.filters.sberbank,
+        tinkoff: state.filters.tinkoff,
+        vtb: state.filters.vtb,
+        cashless: state.filters.cashless,
+        getMoney: state.filters.getMoney,
+    }
 };
 
 const mapDispatchToProps = {

@@ -21,10 +21,13 @@ export const ATMs = [
                 nalog: 15
             },
         ],
+        bank: "sberbank",
         providers: ["visa", "mastercard", "ae", "mir"],
         custom: [
             "nfc"
         ],
+        workingHours: "Открыто с 15:00 до 22:00",
+        available: false
     },
     {
         address: "Площадь Революции, 13/37",
@@ -48,7 +51,9 @@ export const ATMs = [
         custom: [
             "nfc",
             "cashless"
-        ]
+        ],
+        workingHours: "Открыто круглосуточно",
+        available: true,
     },
 ];
 

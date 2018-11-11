@@ -14,13 +14,15 @@ import {
   createNavigationReducer,
 } from 'react-navigation-redux-helpers';
 import AppNavigator from './AppNavigator'
+import filterReducer from "./src/Reducers/filterReducer";
 
 const navReducer = createNavigationReducer(AppNavigator);
 
 const rootReducer = combineReducers({
     cards: cardsReducer,
     settings: settingsReducer,
-    nav: navReducer
+    nav: navReducer,
+    filters: filterReducer
 });
 
 const middleware = createReactNavigationReduxMiddleware(
