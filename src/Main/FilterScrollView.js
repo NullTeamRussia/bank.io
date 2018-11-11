@@ -3,8 +3,8 @@ import {Alert, FlatList, Text, TouchableWithoutFeedback, View} from "react-nativ
 import connect from "react-redux/es/connect/connect";
 
 export class FilterElement extends React.PureComponent {
-    _onPress = () => {
-        this.props.handler("onChange");
+    _onPress = (id) => {
+        this.props.handler("onChange", id);
         this.props.onPressItem(this.props.id);
     };
 
@@ -25,7 +25,7 @@ export class FilterElement extends React.PureComponent {
         const textColor = this.props.selected ? (this.props.dark ? "#2a2a2a" : "#fff") : "#18f";
         const bgColor = this.props.selected ? "#18f" : (this.props.dark ? "#2a2a2a" : "#fff");
         return (
-            <TouchableWithoutFeedback onPress={this._onPress}>
+            <TouchableWithoutFeedback onPress={this._onPress(this.props.id)}>
                 <View style={{...miniLogoStyles, backgroundColor: bgColor}}>
                     <Text style={{ color: textColor }}>
                         {this.props.title}
