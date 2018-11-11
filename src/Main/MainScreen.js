@@ -126,19 +126,19 @@ class MainScreen extends React.Component {
 
     constructor(props) {
         super(props);
-        retrieveCards((err, Cards) => {
-            if (Cards === null) {
-                Cards = []
+        retrieveCards((err, cards) => {
+            if (cards === null) {
+                cards = []
                 storeCards([])
             }
-            Cards = JSON.parse(Cards)
-            retrieveAutoIncrement((err, AutoIncrement) => {
-                if (AutoIncrement === null) {
-                    AutoIncrement = 0
+            cards = JSON.parse(cards)
+            retrieveAutoIncrement((err, autoIncrement) => {
+                if (autoIncrement === null) {
+                    autoIncrement = 0
                     storeAutoIncrement(0)
                 }
-                AutoIncrement = JSON.parse(AutoIncrement)
-                this.props.initCards({Cards, AutoIncrement})
+                autoIncrement = JSON.parse(autoIncrement)
+                this.props.initCards({cards, autoIncrement})
             })
         })
         this.state = {

@@ -3,9 +3,7 @@ import { View, Text, ScrollView, TouchableWithoutFeedback, Image } from "react-n
 import Card from "./Card";
 import { GoBackButton } from "../Shared/GoBackArrow";
 import { AddButton } from '../Shared/AddButton';
-import { addCard } from "../Actions/add_card"
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 class CardsScreenHeader extends React.Component {
     render() {
@@ -40,7 +38,7 @@ class CardsScreen extends React.Component {
             PaymentSystem: "Visa",
             Currency: "Rubble",
             IsNFC: true,
-            IsNew: true,
+            IsNew: true
         })
     }
 
@@ -88,12 +86,8 @@ class CardsScreen extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return {cards: state.cards.Cards}
+    return {cards: state.cards.cards}
 };
 
-const mapDispatchToProps = {
-    addCard
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CardsScreen);
+export default connect(mapStateToProps)(CardsScreen);
 

@@ -41,6 +41,8 @@ const store = createStore(rootReducer, applyMiddleware(middleware));
 
 export default class MainApp extends React.Component {
     render() {
+      console.disableYellowBox = true;
+
       return (
         <Provider store={ store } >
           <AppWithNavigationState />

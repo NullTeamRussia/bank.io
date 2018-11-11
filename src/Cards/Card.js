@@ -2,6 +2,7 @@ import {Image, Text, View, TextInput, Picker, TouchableWithoutFeedback} from "re
 import React from "react";
 import SimplePicker from 'react-native-simple-picker';
 import { connect } from 'react-redux';
+import { addCard } from "../Actions/add_card"
 
 
 class Card extends React.Component {
@@ -14,6 +15,7 @@ class Card extends React.Component {
         super(props)
         if (this.props.Card.IsNew) {
             this.state = {
+                Name: "",
                 nfcState: {
                     image: this.props.dark ? require('../../img/contactlessDark.png') : require('../../img/contactless.png'),
                     styles: {
@@ -76,7 +78,254 @@ class Card extends React.Component {
                 }
             }
         } else {
-
+            if (this.props.Card.IsNFC) {
+                newNfcState = {
+                    image: this.props.dark ? require('../../img/contactlessDark.png') : require('../../img/contactless.png'),
+                    styles: {
+                        height: 25,
+                        width: 25,
+                        alignSelf: "flex-end",
+                        marginTop: 53,
+                        right: 10,
+                        position: "absolute",
+                    },
+                }
+            } else {
+                newNfcState = {
+                    image: this.props.dark ? require('../../img/contactlessDarkOff.png') : require('../../img/contactlessOff.png'),
+                    styles: {
+                        height: 25,
+                        width: 25,
+                        alignSelf: "flex-end",
+                        marginTop: 53,
+                        right: 10,
+                        position: "absolute",
+                    },
+                }
+            }
+            switch (this.props.Card.PaymentSystem){
+                case ('mastercard'): {
+                    newPaymentSystemState = {
+                        image: this.props.dark ? require('../../img/mastercardDark.png') : require('../../img/mastercard.png'),
+                        styles: {
+                            position: "absolute",
+                            width: 26,
+                            height: 20,
+                            right: 10,
+                            alignSelf: "flex-end",
+                            bottom: 10
+                        },
+                        value: 'mastercard'
+                    }
+                    break
+                }
+                case ('ae'): {
+                    newPaymentSystemState = {
+                        image: this.props.dark ? require('../../img/aeDark.png') : require('../../img/ae.png'),
+                        styles: {
+                            position: "absolute",
+                            width: 29,
+                            height: 17,
+                            right: 10,
+                            alignSelf: "flex-end",
+                            bottom: 10
+                        },
+                        value: 'ae'
+                    }
+                    break
+                }
+                case ('mir'): {
+                    newPaymentSystemState = {
+                        image: this.props.dark ? require('../../img/mirDark.png') : require('../../img/mir.png'),
+                        styles: {
+                            position: "absolute",
+                            width: 42,
+                            height: 17,
+                            right: 10,
+                            alignSelf: "flex-end",
+                            bottom: 10
+                        },
+                        value: 'mir'
+                    }
+                    break
+                }
+                case ('visa'): {
+                    newPaymentSystemState = {
+                        image: this.props.dark ? require('../../img/visaDark.png') : require('../../img/visa.png'),
+                        styles: {
+                            position: "absolute",
+                            width: 37,
+                            height: 17,
+                            right: 10,
+                            alignSelf: "flex-end",
+                            bottom: 10
+                        },
+                        value: 'visa'
+                    }
+                    break
+                }
+                default: {
+                    newPaymentSystemState = {
+                        image: this.props.dark ? require('../../img/mastercardDark.png') : require('../../img/mastercard.png'),
+                        styles: {
+                            position: "absolute",
+                            width: 26,
+                            height: 20,
+                            right: 10,
+                            alignSelf: "flex-end",
+                            bottom: 10
+                        },
+                        value: 'mastercard'
+                    }
+                }
+            }
+            switch (this.props.Card.Bank){
+                case('sberbank'): {
+                    newBankState = {
+                        image: require('../../img/sberbankDark.png'),
+                        style: {
+                            position: "absolute",
+                            width: 120,
+                            height: 23,
+                            left: 10,
+                            alignSelf: "flex-start",
+                            top: 12
+                        },
+                        value: 'sberbank'
+                    }
+                    break
+                }
+                case('vtb'): {
+                    newBankState = {
+                        image: this.props.dark ? require('../../img/vtbDark.png') : require('../../img/vtb.png'),
+                        style: {
+                            position: "absolute",
+                            width: 65,
+                            height: 23,
+                            left: 10,
+                            alignSelf: "flex-start",
+                            top: 10
+                        },
+                        value: 'vtb'
+                    }
+                    break
+                }
+                case('tinkoff'): {
+                    newBankState = {
+                        image: this.props.dark ? require('../../img/tinkoffDark.png') : require('../../img/tinkoff.png'),
+                        style: {
+                            position: "absolute",
+                            width: 100,
+                            height: 23,
+                            left: 10,
+                            alignSelf: "flex-start",
+                            top: 10
+                        },
+                        value: 'tinkoff'
+                    }
+                    break
+                }
+                default: {
+                    newBankState = {
+                        image: require('../../img/sberbankDark.png'),
+                        style: {
+                            position: "absolute",
+                            width: 120,
+                            height: 23,
+                            left: 10,
+                            alignSelf: "flex-start",
+                            top: 12
+                        },
+                        value: 'sberbank'
+                    }
+                }
+            }
+            switch(this.props.Card.Currency){
+                case('RUB'): {
+                    newCurrencyState = {
+                        image: "₽",
+                        styles: {
+                            color: 'white',
+                            position: "absolute",
+                            width: 25,
+                            height: 25,
+                            left: 7,
+                            alignSelf: "flex-start",
+                            bottom: 9,
+                            fontSize: 20
+                        },
+                        value: "RUB"
+                    }
+                    break
+                }
+                case('EUR'): {
+                    newCurrencyState = {
+                        image: "€",
+                        styles: {
+                            color: 'white',
+                            position: "absolute",
+                            width: 25,
+                            height: 25,
+                            left: 7,
+                            alignSelf: "flex-start",
+                            bottom: 9,
+                            fontSize: 20
+                        },
+                        value: "EUR"
+                    }
+                    break
+                }
+                case('DOLL'): {
+                    newCurrencyState = {
+                        image: "$",
+                        styles: {
+                            color: 'white',
+                            position: "absolute",
+                            width: 25,
+                            height: 25,
+                            left: 7,
+                            alignSelf: "flex-start",
+                            bottom: 9,
+                            fontSize: 20
+                        },
+                        value: "DOLL"
+                    }
+                    break
+                }
+                default: {
+                    newCurrencyState = {
+                        image: "₽",
+                        styles: {
+                            color: 'white',
+                            position: "absolute",
+                            width: 25,
+                            height: 25,
+                            left: 7,
+                            alignSelf: "flex-start",
+                            bottom: 9,
+                            fontSize: 20
+                        },
+                        value: "RUB"
+                    }
+                    break
+                }
+            }
+            this.state = {
+                nfcState: newNfcState,
+                bankState: newBankState,
+                paymentSystemState: newPaymentSystemState,
+                currencyState: newCurrencyState,
+                cardStyle: {
+                    width: "100%",
+                    paddingLeft: 20,
+                    paddingRight: 20,
+                    height: 125,
+                    borderRadius: 11,
+                    marginBottom: 20,
+                    flex: 1,
+                    backgroundColor: this.props.dark ? '#111111' : '#3e9639'
+                }
+            }
         }
     }
 
@@ -219,7 +468,7 @@ class Card extends React.Component {
                         alignSelf: "flex-start",
                         top: 10
                     },
-                    value: 'sberbank'
+                    value: 'vtb'
                 }
                 break
             }
@@ -234,7 +483,7 @@ class Card extends React.Component {
                         alignSelf: "flex-start",
                         top: 10
                     },
-                    value: 'sberbank'
+                    value: 'tinkoff'
                 }
                 break
             }
@@ -330,10 +579,6 @@ class Card extends React.Component {
         this.setState({currencyState: newCurrencyState})
     }
 
-    done = () => {
-        
-    }
-
     cancel = () => {
         
     }
@@ -341,12 +586,31 @@ class Card extends React.Component {
     render() {
 
         return (
-            <View ref={'cardView'} style={this.state.cardStyle}>
-                {!this.props.Card.IsNew && <Text>{this.props.Card.Bank}</Text>}
-                {!this.props.Card.IsNew && <Text>{this.props.Card.PaymentSystem}</Text>}
-                {!this.props.Card.IsNew && this.props.Card.IsNFC && 
-                    <Image source={require('../../img/contactless.png')}/>
-                }
+            <View style={this.state.cardStyle}>
+                {!this.props.Card.IsNew && 
+                    <Text style={{
+                            color: 'white',
+                            position: "absolute",
+                            width: "50%",
+                            alignSelf: "center",
+                            textAlign: "center",
+                            marginTop: 40,
+                            fontSize: 16
+                        }}>{this.props.Card.Name}</Text>}
+                {!this.props.Card.IsNew && 
+                    <TouchableWithoutFeedback>
+                        <Image style={this.state.bankState.style} source={this.state.bankState.image}/>
+                    </TouchableWithoutFeedback>}
+                {!this.props.Card.IsNew && 
+                    <Text style={this.state.currencyState.styles}>{this.state.currencyState.image}</Text>}
+                {!this.props.Card.IsNew && 
+                    <TouchableWithoutFeedback>
+                        <Image style={this.state.paymentSystemState.style} source={this.state.paymentSystemState.image}/>
+                    </TouchableWithoutFeedback>}
+                {!this.props.Card.IsNew && 
+                    <TouchableWithoutFeedback>
+                        <Image style={this.state.nfcState.style} source={this.state.nfcState.image}/>
+                    </TouchableWithoutFeedback>}
                 {this.props.Card.IsNew && 
                     <TextInput 
                         style={{
@@ -360,7 +624,7 @@ class Card extends React.Component {
                         }}
                         placeholderTextColor={'white'}
                         maxLength={10}
-                        onChange={(name) => this.props.Card.Name = name }
+                        onChange={(name) => this.setState({Name: name}) }
                         placeholder={"Название"}
                         multiline={false}>
                     </TextInput>}
@@ -423,7 +687,18 @@ class Card extends React.Component {
                     </TouchableWithoutFeedback>}
                 {this.props.Card.IsNew && 
                     <TouchableWithoutFeedback
-                        onPress={this.done()}>
+                        onPress={() => {
+                            newCard = {
+                                Name: this.props.Card.Name,
+                                Bank: this.state.bankState.value,
+                                PaymentSystem: this.state.paymentSystemState.value,
+                                Currency: this.state.currencyState.value,
+                                IsNFC: this.state.nfcState.value
+                            }
+                            alert("HERE")
+                            this.props.addCard(newCard)
+                            this.props.Card.IsNew = false;
+                        }}>
                         <Image 
                             style={{
                                 height: 45,
@@ -460,4 +735,8 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(Card)
+const mapDispatchToProps = {
+    addCard
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Card)
